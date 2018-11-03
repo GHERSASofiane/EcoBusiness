@@ -10,6 +10,28 @@
 
    
 
-<ion-content padding>
+<ion-content padding> 
 
+  <div *ngFor="let reserv of reservs">
+    {{reserv.ProductDate }}
+      {{reserv.ProductDescription }} 
+        {{reserv.ProductId  }}
+{{reserv.ProductName  }}
+<!-- {{reserv.ProductPicture  }} -->
+{{reserv.ProductPrice  }}
+{{reserv.ProductStatus  }}
+{{reserv.ReservationDate  }}
+{{reserv.ReservationMessage  }}
+{{reserv.ReservationProduct  }}
+{{reserv.ReservationReceive  }}
+{{reserv.ReservationSend  }}
+{{reserv.UserAdress  }}
+{{reserv.UserId  }}
+{{reserv.UserMail  }} 
+{{reserv.UserName  }}
+{{reserv.UserPhone }}
+
+******************************************
+<br>
+</div>
 </ion-content>

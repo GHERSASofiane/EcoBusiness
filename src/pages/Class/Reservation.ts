@@ -1,4 +1,6 @@
-export class Reservation{
+import { OffreDetails } from "./OffreDetails";
+
+export class Reservation extends OffreDetails{
 
     ReservationSend: number;
     ReservationReceive: number;

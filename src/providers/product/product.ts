@@ -10,6 +10,8 @@ export class ProductProvider {
 
   private lienReservation = "https://wastless.herokuapp.com/ReservationProduct";
 
+  private lienGetReservation = "https://wastless.herokuapp.com/ReservationProduct?id=";
+
   private lienDetail: string = 'https://wastless.herokuapp.com/ProductDetail?ProductId=';
 
   private lienSearch = 'https://wastless.herokuapp.com/ProductSearch?ProductName=';
@@ -59,7 +61,7 @@ export class ProductProvider {
   }
 
   public GetReservationReq(id: number){
-
+    return this.http.get<any>(this.lienGetReservation+id);
   }
 
 }

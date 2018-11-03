@@ -13,15 +13,26 @@ import { ProductProvider } from '../providers/product/product';
 import { EditOfferPage } from '../pages/edit-offer/edit-offer';
 import { ReservationRequestsPage } from '../pages/reservation-requests/reservation-requests';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginPage } from '../pages/login/login';
+import { SignUpPage } from '../pages/sign-up/sign-up';
+import { EditProfilePage } from '../pages/edit-profile/edit-profile';
+import { UserHomePage } from '../pages/user-home/user-home';
+import { UserProvider } from '../providers/user/user';
 
 @NgModule({
   declarations: [
+
     MyApp,
     HomePage,
     OfferSearchPage,
     OfferConsultPage,
     EditOfferPage,
-    ReservationRequestsPage
+    ReservationRequestsPage,
+    LoginPage,
+    SignUpPage,
+    EditProfilePage,
+    UserHomePage
+    
   ],
   imports: [
     BrowserModule,
@@ -35,13 +46,18 @@ import { HttpClientModule } from '@angular/common/http';
     OfferSearchPage,
     OfferConsultPage,
     EditOfferPage,
-    ReservationRequestsPage
+    ReservationRequestsPage,
+    LoginPage,
+    SignUpPage,
+    EditProfilePage,
+    UserHomePage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    ProductProvider
+    ProductProvider,
+    UserProvider
   ]
 })
 export class AppModule {}
