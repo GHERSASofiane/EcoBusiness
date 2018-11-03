@@ -15,35 +15,34 @@ import { ReservationRequestsPage } from '../reservation-requests/reservation-req
 export class MyPubsPage {
 
   // Variables 
-  public offrs: Offer[];
+  public Calls: Offer[];
   private userMe: User;
   public OffLenght = 0;
 
   constructor(public navCtrl: NavController, public navParams: NavParams
-    , private ProductProvid: ProductProvider,
-    public alertCtrl: AlertController) {
+              ,private ProductProvid: ProductProvider,public alertCtrl: AlertController) {
 
     this.userMe = navParams.get('user');
     this.GetProduct();
   }
 
-  ionViewDidLoad() { }
-
+  // reuperer les annances
   public GetProduct() {
 
     this.ProductProvid.MyPubs(this.userMe.userId).subscribe(
       res => {
         if (res.status == "ok") {
-          this.offrs = res.reponse;
-          this.OffLenght = this.offrs.length;
+          this.Calls = res.reponse;
+          this.OffLenght = this.Calls.length;
         } else {
-          this.showAlert("ERREUR", res.message);
+          this.showAlert("ERROR", res.message);
         }
       },
-      err => this.showAlert("ERREUR", "Erreur sur le serveur :( :( ")
+      err => this.showAlert("ERROR", "Error on the server :( :( ")
     )
   }
 
+  // supprission d'une annance
   public Delete(id: number) {
 
     this.ProductProvid.DeleteProduct(id).subscribe(
@@ -52,22 +51,21 @@ export class MyPubsPage {
           this.showAlert("SUCCESS", res.message);
           this.GetProduct();
         } else {
-          this.showAlert("ERREUR", res.message);
+          this.showAlert("ERROR", res.message);
         }
       },
-      err => this.showAlert("ERREUR", "Erreur sur le serveur :( :( ")
+      err => this.showAlert("ERROR", "Error on the server :( :( ")
     )
   }
 
+  // Modifer une annance
   public Edit(offre: Offer) {
-
     this.navCtrl.push(EditOfferPage, { offre: offre, user: this.userMe });
   }
 
+  // consulter les demande de reservation de cette annance
   public Requests(offre: Offer){
-
     this.navCtrl.push(ReservationRequestsPage, { offre: offre, user: this.userMe });
-
   }
 
 

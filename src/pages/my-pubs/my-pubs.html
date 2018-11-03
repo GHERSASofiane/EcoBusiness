@@ -10,8 +10,11 @@
   
   <ion-content padding>
   
+    <!-- l'ensemble des annaces  -->
     <div class="row" *ngIf="OffLenght !== 0">
-      <ion-card class="bg-secondary text-light col-sm-3 col-lg-2" *ngFor="let off of offrs">
+
+      <ion-card class="bg-secondary text-light col-sm-3 col-lg-2" *ngFor="let off of Calls">
+
         <img src="data:image/png;base64,{{off.ProductPicture}}" />
         <ion-card-content>
           <ion-card-title>
@@ -30,6 +33,7 @@
   
         </ion-card-content>
       </ion-card>
+
     </div>
   
   
