@@ -1,0 +1,61 @@
+<ion-header>
+
+    <ion-navbar>
+      <div style="font-family: Snell Roundhand, cursive; " class="text-info">
+        Edit Offer
+      </div>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  <ion-content padding>
+  
+  
+    <!-- Login form -->
+    <form class="list-form  bg-dark">
+  
+      <ion-item>  
+        <img src="data:image/png;base64,{{offre.ProductPicture}}" class="Thumbnail mx-auto d-block img-fluid" />
+      </ion-item>
+  
+      <ion-item>
+        <ion-label floating>
+          Product Name
+        </ion-label>
+        <ion-input type="text" [(ngModel)]="offre.ProductName" [ngModelOptions]="{standalone: true}"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label floating>
+          Product Description
+        </ion-label>
+        <ion-textarea type="text" [(ngModel)]="offre.ProductDescription" [ngModelOptions]="{standalone: true}" rows="5"></ion-textarea>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label floating>
+          Product Price
+        </ion-label>
+        <ion-input type="number" [(ngModel)]="offre.ProductPrice" [ngModelOptions]="{standalone: true}"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label stacked>
+          Product Picture
+        </ion-label>
+        <ion-input type="file" (change)="onFileSelected($event)" accept="image/*"></ion-input>
+      </ion-item>
+  
+    </form>
+  
+  
+    <div>
+      <button ion-button icon-start block class="bg-info" tappable (click)="EditProduct()">
+        <ion-icon name="md-checkmark-circle"></ion-icon>
+        Register
+      </button>
+  
+    </div>
+  
+  
+  </ion-content>

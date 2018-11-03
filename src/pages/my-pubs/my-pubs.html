@@ -1,0 +1,37 @@
+<ion-header>
+
+    <ion-navbar>
+      <div style="font-family: Snell Roundhand, cursive; " class="text-info">
+        My publications
+      </div>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  <ion-content padding>
+  
+    <div class="row" *ngIf="OffLenght !== 0">
+      <ion-card class="bg-secondary text-light col-sm-3 col-lg-2" *ngFor="let off of offrs">
+        <img src="data:image/png;base64,{{off.ProductPicture}}" />
+        <ion-card-content>
+          <ion-card-title>
+            <h3>{{off.ProductName}}
+              <small>
+                <ion-badge item-end class="btn-info">{{off.ProductPrice}} EUR</ion-badge>
+              </small>
+            </h3>
+          </ion-card-title>
+  
+          <p class="text-light">{{off.ProductDescription | slice:0:50}} ...</p>
+
+          <button class="btn-info" ion-button round (click)="Delete(off.ProductId)">DELETE</button>
+          <button class="btn-info" ion-button round (click)="Edit(off)">EDIT</button>
+          <button class="btn-info" ion-button round (click)="Requests(off)">see the requests</button>
+  
+        </ion-card-content>
+      </ion-card>
+    </div>
+  
+  
+  
+  </ion-content>

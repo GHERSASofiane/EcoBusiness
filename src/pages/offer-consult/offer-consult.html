@@ -1,0 +1,51 @@
+<ion-header>
+
+  <ion-navbar>
+    <div style="font-family: Snell Roundhand, cursive; " class="text-info">
+      Offer Consult
+    </div>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <pre *ngIf="infos">
+
+<img src="data:image/png;base64,{{infos.ProductPicture}}" >
+
+ProductName  {{infos.ProductName }}
+ProductDate  {{infos.ProductDate}}
+ProductDescription  {{infos.ProductDescription}} 
+UserMail  {{infos.UserMail}}
+UserAdress  {{infos.UserAdress}}
+
+ProductId  {{infos.ProductId}}
+ProductPrice  {{infos.ProductPrice}}
+ProductStatus  {{infos.ProductStatus}}
+UserId  {{infos.UserId}}
+UserPhone  {{infos.UserPhone}}
+  
+ 
+</pre>
+
+ 
+  <ion-list inset  >
+
+    <ion-item>
+      <ion-label floating> </ion-label>
+      <ion-input type="date" [(ngModel)]="Reservation.ReservationDate"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>message for the seller</ion-label>
+      <ion-input type="text" [(ngModel)]="Reservation.ReservationMessage"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <button class="btn-info" ion-button round block (click)="SendReservation()">Send</button>
+    </ion-item>
+  </ion-list>
+
+
+
+</ion-content>
