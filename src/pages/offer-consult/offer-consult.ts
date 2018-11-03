@@ -22,6 +22,7 @@ export class OfferConsultPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private ProductProvid: ProductProvider, public alertCtrl: AlertController) {
+
     this.id = navParams.get('id');
     this.userMe = navParams.get('user');
     this.GetDetails();
@@ -31,22 +32,21 @@ export class OfferConsultPage {
 
   }
 
-  ionViewDidLoad() { }
-
+  // reuperer les details d'une annance
   private GetDetails(): void {
     this.ProductProvid.GetProductDetails(this.id).subscribe(
       res => {
         if (res.status == "ok") {
           this.infos = res.reponse;
         } else {
-          this.showAlert("ERREUR", res.message);
+          this.showAlert("ERROR", res.message);
         }
       },
-      err => this.showAlert("ERREUR", "Erreur sur le serveur :( :( ")
+      err => this.showAlert("ERROR", "Error on the server :( :( ")
     )
   }
  
-
+  // Envoie d'une demande de reservation
   public SendReservation(){
 
     this.Reservation.ReservationSend = this.userMe.userId;
@@ -59,10 +59,10 @@ export class OfferConsultPage {
           this.showAlert("SUCCESS", res.message);  
           this.navCtrl.pop();
         } else {
-          this.showAlert("ERREUR", res.message);
+          this.showAlert("ERROR", res.message);
         }
       },
-      err => this.showAlert("ERREUR", "Erreur sur le serveur :( :( ")
+      err => this.showAlert("ERROR", "Error on the server :( :( ")
     )
   }
 
