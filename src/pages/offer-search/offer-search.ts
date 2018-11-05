@@ -29,7 +29,7 @@ export class OfferSearchPage {
     private UserProvid: UserProvider
   ) {
 
-    this.userMe = UserProvid.getUser();
+    this.userMe = user;
     this.getoffresBypage('', this.page);
   }
 

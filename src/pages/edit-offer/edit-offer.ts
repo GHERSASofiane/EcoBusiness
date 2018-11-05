@@ -40,6 +40,7 @@ export class EditOfferPage {
     this.offre.ProductPicture = btoa(binaryString);
    }
 
+   // modifier l'annance
   public EditProduct() {
 
     this.offre.ProductDescription = this.offre.ProductDescription.toLowerCase();
@@ -51,10 +52,10 @@ export class EditOfferPage {
           this.showAlert("SUCCESS", res.message);
           this.navCtrl.pop();
         } else {
-          this.showAlert("ERREUR", res.message);
+          this.showAlert("ERROR", res.message);
         }
       },
-      err => this.showAlert("ERREUR", "Erreur sur le serveur :( :( ")
+      err => this.showAlert("ERROR", "Error on the server :( :( ")
     )
   }
 

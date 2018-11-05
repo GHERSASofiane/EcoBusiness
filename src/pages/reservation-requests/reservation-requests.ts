@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, Navbar } from 'ionic-angular';
 import { User } from '../Class/User';
 import { Offer } from '../Class/Offer';
 import { ProductProvider } from '../../providers/product/product';
@@ -42,7 +42,35 @@ export class ReservationRequestsPage {
     ); 
   }
 
+  // Valider une demande parmet tout les demandes recu pour ce produit 
+  public ReservationValidate(reserv: Reservation) {
 
+    this.ProductProvid.ReservationValidate(reserv).subscribe(
+      res => {
+        if (res.status == "ok") {
+          this.showAlert("SUCCESS", res.message);
+          this.SendSMS(reserv);
+          this.navCtrl.pop();
+        } else {
+          this.showAlert("ERROR", res.message);
+        }
+      },
+      err => this.showAlert("ERROR", "Error on the server :( :( ")
+    );
+
+  }
+
+  // fonction pour envoyer des messages a les demandeur de reservation 
+  private SendSMS(reservAccepte: Reservation){
+    for (let index = 0; index < this.reservs.length; index++) {  
+      if(this.reservs[index] === reservAccepte){
+        this.showAlert("SMS", "Votre demande est accepter : "+this.reservs[index].UserPhone);
+      }else{
+        this.showAlert("SMS", "Votre demande n'est pas accepter : "+this.reservs[index].UserPhone);
+      }
+      
+    }
+  }
 
   //*********** Function pour alert */
   private showAlert(title: string, subTitle: string): void {

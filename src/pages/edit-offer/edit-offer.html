@@ -1,7 +1,7 @@
 <ion-header>
 
     <ion-navbar>
-      <div style="font-family: Snell Roundhand, cursive; " class="text-info">
+      <div style="font-family: Snell Roundhand, cursive; " class="text-info font-weight-bold">
         Edit Offer
       </div>
     </ion-navbar>
@@ -43,14 +43,14 @@
         <ion-label stacked>
           Product Picture
         </ion-label>
-        <ion-input type="file" (change)="onFileSelected($event)" accept="image/*"></ion-input>
+        <ion-input type="file" (change)="onFileSelected($event)" accept="image/*" class="form-control-file"></ion-input>
       </ion-item>
   
     </form>
   
   
     <div>
-      <button ion-button icon-start block class="bg-info" tappable (click)="EditProduct()">
+      <button ion-button icon-start block class="bg-info" tappable (click)="EditProduct()" >
         <ion-icon name="md-checkmark-circle"></ion-icon>
         Register
       </button>

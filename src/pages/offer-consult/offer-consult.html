@@ -9,24 +9,25 @@
 </ion-header>
 
 <ion-content padding>
-  <pre *ngIf="infos">
+  <div *ngIf="infos" class="align-middle">
 
-<img src="data:image/png;base64,{{infos.ProductPicture}}" >
+  <h2 class="font-weight-bold text-info">{{infos.ProductName }}</h2>
+  
+<img src="data:image/png;base64,{{infos.ProductPicture}}" ><br>
 
-ProductName  {{infos.ProductName }}
-ProductDate  {{infos.ProductDate}}
-ProductDescription  {{infos.ProductDescription}} 
-UserMail  {{infos.UserMail}}
-UserAdress  {{infos.UserAdress}}
+ {{infos.ProductDescription}}  <br>
+ 
+ <a href="mailto:{{infos.UserMail}}" class="text-info mx-4  pm-4"><ion-icon name="ios-send-outline" class="text-info mx-4  pm-4">{{infos.UserAdress}}</ion-icon> </a><br>
+ <a href="mailto:{{infos.UserMail}}" class="text-info mx-4  pm-4"><ion-icon name="ios-mail" class="text-info mx-4 pm-4"> {{infos.UserMail}} </ion-icon> </a><br>
 
-ProductId  {{infos.ProductId}}
+ 
 ProductPrice  {{infos.ProductPrice}}
 ProductStatus  {{infos.ProductStatus}}
 UserId  {{infos.UserId}}
 UserPhone  {{infos.UserPhone}}
   
  
-</pre>
+  </div>
 
  
   <ion-list inset  >

@@ -13,29 +13,26 @@
 </ion-header>
 
 
-<ion-content padding class="bg-dark">
+<ion-content padding class="bg-light">
 
   <!-- DIV pour l'ensemble des Annances  -->
   <div class="row" *ngIf="OffLenght !== 0">
 
-    <ion-card class="bg-secondary text-light col-sm-3 col-lg-2" 
+    <ion-card class=" text-light col-sm-3 col-lg-2" 
               (click)="goToPageOfferConsult(off.ProductId)" 
               *ngFor="let off of Calls">
 
-      <img src="data:image/png;base64,{{off.ProductPicture}}" />
+      <img src="data:image/png;base64,{{off.ProductPicture}}" class="h-50" />
 
       <ion-card-content>
         <ion-card-title>
-          <h3>{{off.ProductName}}
+          <h2 class="font-weight-bold text-secondary mt-4">{{off.ProductName}}
             <small>
               <ion-badge item-end class="btn-info">{{off.ProductPrice}} EUR</ion-badge>
             </small>
-          </h3>
+          </h2>
         </ion-card-title>
-
-
-        <p class="text-light">{{off.ProductDescription | slice:0:50}} ... </p>
-
+        <p>{{off.ProductDescription | slice:0:40}} ...</p> 
       </ion-card-content>
     </ion-card>
 
@@ -43,7 +40,7 @@
 
   <!-- DIV en cas que aucune offre n'est trouver -->
   <div *ngIf="OffLenght === 0">
-    <h1>sorry no ads are available</h1>
+    <h1 class="font-weight-bold">Sorry! no offers for your request :( try a, other keyword </h1>
   </div>
 
   <!-- DIV gestion des pages  -->
