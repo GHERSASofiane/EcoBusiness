@@ -10,7 +10,8 @@ export class User {
     public userName? : string,
     public userAdress? : string,
     public userPhone? : string,
-    public userPicture? : string
+    public userPicture? : string,
+    public UserKey? : string
     ){};
 
 

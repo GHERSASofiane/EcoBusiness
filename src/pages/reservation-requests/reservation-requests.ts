@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController, Navbar } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { User } from '../Class/User';
 import { Offer } from '../Class/Offer';
 import { ProductProvider } from '../../providers/product/product';
@@ -31,8 +31,7 @@ export class ReservationRequestsPage {
   private GetReservationReq(){
     this.ProductProvid.GetReservationReq(this.Call.ProductId).subscribe(
       res => {
-        if (res.status == "ok") {
-          this.showAlert("OKKK", "res.reponse");
+        if (res.status == "ok") { 
           this.reservs = res.reponse;
         } else {
           this.showAlert("ERROR", res.message);

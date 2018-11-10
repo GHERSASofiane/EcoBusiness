@@ -5,8 +5,9 @@ import { User } from '../../pages/Class/User';
 @Injectable()
 export class UserProvider {
 
+  private ADSProfil = "https://ecobusiness-server.herokuapp.com/ADSProfil";
+
   private _loginUrl = "https://wastless.herokuapp.com/authen";
-  private _registerUrl = "https://wastless.herokuapp.com/signup";
   private _user = new User("", "");
 
   private _url = "https://wastless.herokuapp.com/editprofile";
@@ -14,14 +15,12 @@ export class UserProvider {
   private _userHome = "https://wastless.herokuapp.com/userhome";
 
   
-  constructor(public http: HttpClient) {
-    console.log('Hello UserProvider Provider');
-  }
+  constructor(public http: HttpClient) { }
 
 
-  register(user)
-  {
-    return this.http.post<any>(this._registerUrl,user)
+// Ajoute un compte
+   public register(user: User) {
+    return this.http.post<any>(this.ADSProfil,user)
   }
 
   login(user)

@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { User } from '../Class/User';
-import { Offer } from '../Class/Offer';
-import { user } from '../test/user';
+import { Offer } from '../Class/Offer'; 
 import { OfferConsultPage } from '../offer-consult/offer-consult';
-import { ProductProvider } from '../../providers/product/product';
-import { UserProvider } from '../../providers/user/user';
+import { ProductProvider } from '../../providers/product/product'; 
 
+import { Storage } from '@ionic/storage';
+import { HomePage } from '../home/home';
 
 @IonicPage()
 @Component({
@@ -26,10 +26,16 @@ export class OfferSearchPage {
   // Constructeur
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private ProductProvid: ProductProvider, public alertCtrl: AlertController,
-    private UserProvid: UserProvider
-  ) {
-
-    this.userMe = user;
+    private storage: Storage  ) {
+      
+    // Or to get a key/value pair
+    storage.get('UserMe').then((val) => {
+      console.log('Your UserMe is', val);
+      this.userMe = val;
+    }).catch(
+     err => this.navCtrl.push(HomePage)
+    );
+   
     this.getoffresBypage('', this.page);
   }
 

@@ -8,45 +8,62 @@
 
 </ion-header>
 
-<ion-content padding>
-  <div *ngIf="infos" class="align-middle">
+<ion-content padding >
+   
 
-  <h2 class="font-weight-bold text-info">{{infos.ProductName }}</h2>
-  
-<img src="data:image/png;base64,{{infos.ProductPicture}}" ><br>
+  <ion-card class=" text-light " *ngIf="infos" style="height: 100%;"> 
+    <ion-card-content>
+      <ion-list>
 
- {{infos.ProductDescription}}  <br>
+        <h2 class="font-weight-bold text-info text-center">{{infos.ProductName }}
+          <small>
+            <ion-badge class="btn-info">{{infos.ProductPrice}} EUR</ion-badge>
+          </small>
+        </h2><br>
+
+        <ion-item class="text-info">
+          {{infos.ProductDescription}}
+        </ion-item>
+
+        <button ion-item>
+          <a href="mailto:{{infos.UserMail}}" class="text-info">
+            <ion-icon name="ios-mail" class="text-dark  mx-4 "> </ion-icon> {{infos.UserMail}}
+          </a>
+        </button>
+
+        <button ion-item>
+          <a href="tel:{{infos.UserPhone}}" class="text-info">
+            <ion-icon name="ios-call-outline" class="  mx-4 "> </ion-icon> {{infos.UserPhone}}
+          </a>
+        </button>
+
+        <button ion-item>
+          <a href="https://www.google.fr/maps/place/{{infos.UserAdress}}" target="_blank" class="text-info">
+            <ion-icon name="ios-send-outline" class="mx-4 " item-start></ion-icon>{{infos.UserAdress}}
+          </a>
+        </button>
+
+        <button ion-item class="text-info">
+           Pour Votre Demande remplir les champs et envoyer svp
+          </button>
+
+        <ion-item>
+          <ion-label floating> </ion-label>
+          <ion-input type="date" [(ngModel)]="Reservation.ReservationDate"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>message for the seller</ion-label>
+          <ion-input type="text" [(ngModel)]="Reservation.ReservationMessage"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <button class="btn-info" ion-button round block (click)="SendReservation()">Send</button>
+        </ion-item>
+
+      </ion-list>
+    </ion-card-content> 
+  </ion-card>
  
- <a href="mailto:{{infos.UserMail}}" class="text-info mx-4  pm-4"><ion-icon name="ios-send-outline" class="text-info mx-4  pm-4">{{infos.UserAdress}}</ion-icon> </a><br>
- <a href="mailto:{{infos.UserMail}}" class="text-info mx-4  pm-4"><ion-icon name="ios-mail" class="text-info mx-4 pm-4"> {{infos.UserMail}} </ion-icon> </a><br>
-
- 
-ProductPrice  {{infos.ProductPrice}}
-ProductStatus  {{infos.ProductStatus}}
-UserId  {{infos.UserId}}
-UserPhone  {{infos.UserPhone}}
-  
- 
-  </div>
-
- 
-  <ion-list inset  >
-
-    <ion-item>
-      <ion-label floating> </ion-label>
-      <ion-input type="date" [(ngModel)]="Reservation.ReservationDate"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label floating>message for the seller</ion-label>
-      <ion-input type="text" [(ngModel)]="Reservation.ReservationMessage"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <button class="btn-info" ion-button round block (click)="SendReservation()">Send</button>
-    </ion-item>
-  </ion-list>
-
-
 
 </ion-content>

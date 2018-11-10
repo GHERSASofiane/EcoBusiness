@@ -20,17 +20,17 @@
 
     <ion-card class=" text-light col-sm-3 col-lg-2" 
               (click)="goToPageOfferConsult(off.ProductId)" 
-              *ngFor="let off of Calls">
+              *ngFor="let off of Calls" style="height: 25%;" >
 
-      <img src="data:image/png;base64,{{off.ProductPicture}}" class="h-50" />
+      <img src="data:image/png;base64,{{off.ProductPicture}}"  />
 
       <ion-card-content>
         <ion-card-title>
-          <h2 class="font-weight-bold text-secondary mt-4">{{off.ProductName}}
+          <h4 class="font-weight-bold text-secondary mt-4 ">{{off.ProductName}}
             <small>
               <ion-badge item-end class="btn-info">{{off.ProductPrice}} EUR</ion-badge>
             </small>
-          </h2>
+          </h4>
         </ion-card-title>
         <p>{{off.ProductDescription | slice:0:40}} ...</p> 
       </ion-card-content>
@@ -75,11 +75,11 @@
 
   <ion-header>
     <ion-toolbar (click)="openPage('UserHomePage')">
-      <ion-title>
+      <ion-title *ngIf="userMe">
 
         <p style="color: #00ccff; font-family: Snell Roundhand, cursive; ">
-
-          <img src="{{userMe.userPicture}}" width="10%" height="10%" class="rounded-circle mr-4 ">
+          <img src="data:image/png;base64,{{userMe.userPicture}}"  width="10%" height="10%" class="rounded-circle mr-4 "/>
+           
           {{userMe.userName}}
 
         </p>
