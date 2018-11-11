@@ -5,8 +5,7 @@ import { Validators, FormControl, FormGroup } from '@angular/forms';
 import { User } from '../Class/User';
 import { UserProvider } from '../../providers/user/user';
 import { OfferSearchPage } from '../offer-search/offer-search';
-import { Storage } from '@ionic/storage';
-
+import { Storage } from '@ionic/storage'; 
 @IonicPage()
 @Component({
   selector: 'page-sign-up',
@@ -55,7 +54,7 @@ export class SignUpPage {
             this.userMe = res.reponse;
               // set a key/value
             this.storage.set('UserMe', this.userMe); 
-            this.navCtrl.push(OfferSearchPage);
+            this.navCtrl.setRoot(OfferSearchPage);
           } else {
             this.showAlert("ERROR", res.message);
           }
