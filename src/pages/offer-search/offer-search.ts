@@ -27,13 +27,12 @@ export class OfferSearchPage {
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private ProductProvid: ProductProvider, public alertCtrl: AlertController,
     private storage: Storage  ) {
-      
+
     // Or to get a key/value pair
-    storage.get('UserMe').then((val) => {
-      console.log('Your UserMe is', val);
+    this.storage.get('UserMe').then((val) => { 
       this.userMe = val;
     }).catch(
-     err => this.navCtrl.push(HomePage)
+     err => this.navCtrl.setRoot(HomePage)
     );
    
     this.getoffresBypage('', this.page);
@@ -89,6 +88,14 @@ export class OfferSearchPage {
       this.page = this.page + 1;
       this.getoffresBypage(this.CallSearch, this.page);
     }
+
+  }
+
+  // deconnexion
+  public SignOut(): void {
+
+    this.storage.remove('UserMe');  
+    this.navCtrl.setRoot(HomePage);
 
   }
 

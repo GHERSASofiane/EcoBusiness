@@ -28,23 +28,23 @@ export class UserHomePage {
   ionViewCanEnter()
   {
      
-    if (this.UserProvid.loggedIn())
-    {
-    /** 
-    const helper = new JwtHelperService();
-    let token = localStorage.getItem('token');                                    
-    this.user = helper.decodeToken(token);
-    */
-    this.user = this.UserProvid.getUser(); 
-    this.offres();
-      return true;
-    }
-    else
-    {
+    // if (this.UserProvid.loggedIn())
+    // {
+    // /** 
+    // const helper = new JwtHelperService();
+    // let token = localStorage.getItem('token');                                    
+    // this.user = helper.decodeToken(token);
+    // */
+    // this.user = this.UserProvid.getUser(); 
+    // this.offres();
+    //   return true;
+    // }
+    // else
+    // {
      
-    this.navCtrl.push(HomePage);
-    return false;
-    }
+    // this.navCtrl.push(HomePage);
+    // return false;
+    // }
     
   }
 
@@ -74,19 +74,19 @@ export class UserHomePage {
   {
    
    
-    this.UserProvid.getMyProducts().subscribe
-      (
-        res => 
-        {
-          let rep = new Reponse("",""); 
-          rep = res;
-          console.log(res);
-          this.products = rep.reponse;
-          console.log(JSON.stringify(this.products));
+    // this.UserProvid.getMyProducts().subscribe
+    //   (
+    //     res => 
+    //     {
+    //       let rep = new Reponse("",""); 
+    //       rep = res;
+    //       console.log(res);
+    //       this.products = rep.reponse;
+    //       console.log(JSON.stringify(this.products));
          
-        },
-        err => console.log(err)
-      );
+    //     },
+    //     err => console.log(err)
+    //   );
      
   }
  

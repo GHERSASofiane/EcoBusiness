@@ -22,7 +22,7 @@ export class EditProfilePage {
 
   ionViewWillEnter() {
    // console.log('ionViewDidLoad InscriptionPage');
-    this.user = this.UserProvid.getUser();
+    // this.user = this.UserProvid.getUser();
     
   }
 

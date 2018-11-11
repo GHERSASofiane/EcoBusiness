@@ -53,6 +53,7 @@ export class SignUpPage {
             this.showAlert("SUCCESS", "your account is well created");
             this.userMe = res.reponse;
               // set a key/value
+            this.storage.remove('UserMe'); 
             this.storage.set('UserMe', this.userMe); 
             this.navCtrl.setRoot(OfferSearchPage);
           } else {

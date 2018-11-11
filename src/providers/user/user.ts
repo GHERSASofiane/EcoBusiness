@@ -7,12 +7,10 @@ export class UserProvider {
 
   private ADSProfil = "https://ecobusiness-server.herokuapp.com/ADSProfil";
 
-  private _loginUrl = "https://wastless.herokuapp.com/authen";
-  private _user = new User("", "");
+  private Login = "https://ecobusiness-server.herokuapp.com/Login"; 
 
   private _url = "https://wastless.herokuapp.com/editprofile";
-
-  private _userHome = "https://wastless.herokuapp.com/userhome";
+ 
 
   
   constructor(public http: HttpClient) { }
@@ -23,45 +21,17 @@ export class UserProvider {
     return this.http.post<any>(this.ADSProfil,user)
   }
 
-  login(user)
-  {
-    return this.http.post<any>(this._loginUrl, user)
-  }
-
-  loggedIn()
-  {
-    return !!localStorage.getItem('token');
-  
-  }
-
-  getToken()
-  {
-    return localStorage.getItem('token');
-      
-  }
-
-  setUser(user: User)
-  {
-    this._user = user;
-  }
-
-  getUser()
-  {
-    return this._user;
+  // login
+  public login(user: User)  {
+    return this.http.post<any>(this.Login, user)
   }
   
+   
 
   updateProfile(user)
   {
     return this.http.post<any>(this._url,user)
   }
-
-
-  getMyProducts()
-  {
-    
-    return this.http.get<any>(this._userHome)
-  }
-
+ 
 
 }
