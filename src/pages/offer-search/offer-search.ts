@@ -94,8 +94,28 @@ export class OfferSearchPage {
   // deconnexion
   public SignOut(): void {
 
-    this.storage.remove('UserMe');  
-    this.navCtrl.setRoot(HomePage);
+    let alert = this.alertCtrl.create({
+      title: 'Confirmation',
+      message: 'Est-tu vous sûr de continuer cette operation ?',
+      buttons: [
+        {
+          text: 'Non',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Oui',
+          handler: () => {
+            this.storage.remove('UserMe');  
+            this.navCtrl.setRoot(HomePage);
+          }
+        }
+      ]
+    });
+    alert.present();
+
 
   }
 

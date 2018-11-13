@@ -45,8 +45,7 @@ export class AddOfferPage {
   }
 
   // fonction qui s'occupe de l'ajoute de l'annance
-  public addProduct() {
-
+  public addProduct() { 
     this.product.ProductDescription = this.product.ProductDescription.toLowerCase();
     this.product.ProductName = this.product.ProductName.toLowerCase();
 
@@ -73,5 +72,6 @@ export class AddOfferPage {
     });
     alert.present();
   }
+ 
 
 }

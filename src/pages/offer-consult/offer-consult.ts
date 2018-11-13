@@ -52,18 +52,40 @@ export class OfferConsultPage {
     this.Reservation.ReservationSend = this.userMe.userId;
     this.Reservation.ReservationReceive = this.infos.UserId;
     this.Reservation.ReservationProduct = this.infos.ProductId;
-    
-    this.ProductProvid.SendReservation(this.Reservation).subscribe(
-      res => {
-        if (res.status == "ok") {
-          this.showAlert("SUCCESS", res.message);  
-          this.navCtrl.pop();
-        } else {
-          this.showAlert("ERROR", res.message);
+
+    let alert = this.alertCtrl.create({
+      title: 'Confirmation',
+      message: ' Le '+this.Reservation.ReservationDate+' Est Met Est-tu vous sûr de continuer cette operation ?',
+      buttons: [
+        {
+          text: 'Non',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Oui',
+          handler: () => {
+            this.ProductProvid.SendReservation(this.Reservation).subscribe(
+              res => {
+                if (res.status == "ok") {
+                  this.showAlert("SUCCESS", res.message);  
+                  this.navCtrl.pop();
+                } else {
+                  this.showAlert("ERROR", res.message);
+                }
+              },
+              err => this.showAlert("ERROR", "Error on the server :( :( ")
+            )
+          }
         }
-      },
-      err => this.showAlert("ERROR", "Error on the server :( :( ")
-    )
+      ]
+    });
+    alert.present();
+
+
+
   }
 
   //*********** Function pour alert */

@@ -13,7 +13,28 @@
   </ion-header>
   
 <ion-content padding class="lightgray"> 
+ 
+   <!-- DIV pour l'ensemble des Annances  -->
+   <div class="row" *ngIf="OffLenght !== 0">  
 
-  <button ion-button (tap)="search()"> search </button>
+    <ion-card class=" text-light col-sm-3 col-lg-2"  
+              *ngFor="let off of Calls"  >
+
+      <img src="data:image/png;base64,{{off.ProductPicture}}" />
+
+      <ion-card-content>
+        <ion-card-title>
+          <h4 class="font-weight-bold text-secondary mt-4 ">{{off.ProductName}}
+            <small>
+              <ion-badge item-end class="btn-info">{{off.ProductPrice}} EUR</ion-badge>
+            </small>
+          </h4>
+        </ion-card-title>
+        <p>{{off.ProductDescription | slice:0:40}} ...</p> 
+      </ion-card-content>
+    </ion-card>
+
+  </div>
+
 
 </ion-content>

@@ -20,9 +20,9 @@
 
     <ion-card class=" text-light col-sm-3 col-lg-2" 
               (click)="goToPageOfferConsult(off.ProductId)" 
-              *ngFor="let off of Calls" style="height: 25%;" >
+              *ngFor="let off of Calls"  >
 
-      <img src="data:image/png;base64,{{off.ProductPicture}}"  />
+      <img src="data:image/png;base64,{{off.ProductPicture}}" />
 
       <ion-card-content>
         <ion-card-title>
@@ -90,13 +90,7 @@
 
   <ion-content>
     <ion-list>
-
-      <button ion-item (click)="openPage('OfferSearchPage')">
-        <p>
-          <ion-icon name="md-search" class="mr-5"></ion-icon> Search
-        </p>
-      </button>
-
+ 
       <button ion-item (click)="openPage('AddOfferPage')">
         <p>
           <ion-icon name="md-add" class="mr-5"></ion-icon> Add

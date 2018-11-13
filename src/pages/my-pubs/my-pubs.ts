@@ -45,17 +45,38 @@ export class MyPubsPage {
   // supprission d'une annance
   public Delete(id: number) {
 
-    this.ProductProvid.DeleteProduct(id).subscribe(
-      res => {
-        if (res.status == "ok") {
-          this.showAlert("SUCCESS", res.message);
-          this.GetProduct();
-        } else {
-          this.showAlert("ERROR", res.message);
+    let alert = this.alertCtrl.create({
+      title: 'Confirmation',
+      message: 'Est-tu vous sûr de continuer cette operation ?',
+      buttons: [
+        {
+          text: 'Non',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Oui',
+          handler: () => {
+            this.ProductProvid.DeleteProduct(id).subscribe(
+              res => {
+                if (res.status == "ok") {
+                  this.showAlert("SUCCESS", res.message);
+                  this.GetProduct();
+                } else {
+                  this.showAlert("ERROR", res.message);
+                }
+              },
+              err => this.showAlert("ERROR", "Error on the server :( :( ")
+            )
+          }
         }
-      },
-      err => this.showAlert("ERROR", "Error on the server :( :( ")
-    )
+      ]
+    });
+    alert.present();
+
+
   }
 
   // Modifer une annance

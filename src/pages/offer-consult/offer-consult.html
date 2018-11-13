@@ -8,10 +8,16 @@
 
 </ion-header>
 
-<ion-content padding >
-   
+<ion-content padding>
 
-  <ion-card class=" text-light " *ngIf="infos" style="height: 100%;"> 
+
+  <div class="row container" *ngIf="infos">
+    <div class="col"></div>
+    <img src="data:image/png;base64,{{infos.ProductPicture}}"  class="col-sm-3 col-lg-2 align-self-center"/>
+    <div class="col"></div>
+  </div>
+
+  <ion-card class=" text-light " *ngIf="infos" style="height: 100%;">
     <ion-card-content>
       <ion-list>
 
@@ -25,27 +31,24 @@
           {{infos.ProductDescription}}
         </ion-item>
 
-        <button ion-item>
-          <a href="mailto:{{infos.UserMail}}" class="text-info">
+         
+          <a href="mailto:{{infos.UserMail}}" class="text-info" ion-item>
             <ion-icon name="ios-mail" class="text-dark  mx-4 "> </ion-icon> {{infos.UserMail}}
           </a>
-        </button>
+        
 
-        <button ion-item>
-          <a href="tel:{{infos.UserPhone}}" class="text-info">
-            <ion-icon name="ios-call-outline" class="  mx-4 "> </ion-icon> {{infos.UserPhone}}
+         
+          <a href="tel:{{infos.UserPhone}}" class="text-info" ion-item>
+            <ion-icon name="ios-call-outline" class="text-dark  mx-4 "> </ion-icon> {{infos.UserPhone}}
           </a>
-        </button>
+        
 
-        <button ion-item>
-          <a href="https://www.google.fr/maps/place/{{infos.UserAdress}}" target="_blank" class="text-info">
-            <ion-icon name="ios-send-outline" class="mx-4 " item-start></ion-icon>{{infos.UserAdress}}
+        
+          <a href="https://www.google.fr/maps/place/{{infos.UserAdress}}" target="_blank" class="text-info " ion-item>
+            <ion-icon name="ios-send-outline" class="text-dark mx-4 " item-start></ion-icon>{{infos.UserAdress}}
           </a>
-        </button>
-
-        <button ion-item class="text-info">
-           Pour Votre Demande remplir les champs et envoyer svp
-          </button>
+        
+ 
 
         <ion-item>
           <ion-label floating> </ion-label>
@@ -62,8 +65,8 @@
         </ion-item>
 
       </ion-list>
-    </ion-card-content> 
+    </ion-card-content>
   </ion-card>
- 
+
 
 </ion-content>

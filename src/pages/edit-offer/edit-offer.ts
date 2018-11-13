@@ -46,17 +46,38 @@ export class EditOfferPage {
     this.offre.ProductDescription = this.offre.ProductDescription.toLowerCase();
     this.offre.ProductName = this.offre.ProductName.toLowerCase();
 
-    this.ProductProvid.EditProduct(this.offre).subscribe(
-      res => {
-        if (res.status == "ok") {
-          this.showAlert("SUCCESS", res.message);
-          this.navCtrl.pop();
-        } else {
-          this.showAlert("ERROR", res.message);
+    let alert = this.alertCtrl.create({
+      title: 'Confirmation',
+      message: 'Est-tu vous sûr de continuer cette operation ?',
+      buttons: [
+        {
+          text: 'Non',
+          role: 'cancel',
+          handler: () => {
+            
+          }
+        },
+        {
+          text: 'Oui',
+          handler: () => {
+            this.ProductProvid.EditProduct(this.offre).subscribe(
+              res => {
+                if (res.status == "ok") {
+                  this.showAlert("SUCCESS", res.message);
+                  this.navCtrl.pop();
+                } else {
+                  this.showAlert("ERROR", res.message);
+                }
+              },
+              err => this.showAlert("ERROR", "Error on the server :( :( ")
+            )
+          }
         }
-      },
-      err => this.showAlert("ERROR", "Error on the server :( :( ")
-    )
+      ]
+    });
+    alert.present();
+
+
   }
 
 

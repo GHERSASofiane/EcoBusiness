@@ -44,18 +44,40 @@ export class ReservationRequestsPage {
   // Valider une demande parmet tout les demandes recu pour ce produit 
   public ReservationValidate(reserv: Reservation) {
 
-    this.ProductProvid.ReservationValidate(reserv).subscribe(
-      res => {
-        if (res.status == "ok") {
-          this.showAlert("SUCCESS", res.message);
-          this.SendSMS(reserv);
-          this.navCtrl.pop();
-        } else {
-          this.showAlert("ERROR", res.message);
+
+    let alert = this.alertCtrl.create({
+      title: 'Confirmation',
+      message: 'Est-tu vous sûr de confermer pour le '+reserv.ReservationDate+' ?',
+      buttons: [
+        {
+          text: 'Non',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Oui',
+          handler: () => {
+            this.ProductProvid.ReservationValidate(reserv).subscribe(
+              res => {
+                if (res.status == "ok") {
+                  this.showAlert("SUCCESS", res.message);
+                  this.SendSMS(reserv);
+                  this.navCtrl.pop();
+                } else {
+                  this.showAlert("ERROR", res.message);
+                }
+              },
+              err => this.showAlert("ERROR", "Error on the server :( :( ")
+            );
+          }
         }
-      },
-      err => this.showAlert("ERROR", "Error on the server :( :( ")
-    );
+      ]
+    });
+    alert.present();
+
+
 
   }
 
