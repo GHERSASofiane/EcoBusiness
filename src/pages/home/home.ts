@@ -21,6 +21,8 @@ public OffLenght = 0;
 
   constructor(public navCtrl: NavController, private ProductProvid: ProductProvider, private storage: Storage,
     public alertCtrl: AlertController) {
+       
+
     // Or to get a key/value pair
     this.storage.get('UserMe').then( val => { 
       if(val != null){
@@ -35,6 +37,7 @@ public OffLenght = 0;
    
     
   }
+ 
 
   // si je suis connecter je serai rediriger vers la page principale
   MainPage()

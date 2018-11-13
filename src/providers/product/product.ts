@@ -15,10 +15,10 @@ export class ProductProvider {
   private lienMyPubs: string = 'https://ecobusiness-server.herokuapp.com/MyPubs?idUser=';
 
   private lienReservationValidate = "https://ecobusiness-server.herokuapp.com/ReservationValidate";
-
-
+ 
 
   constructor(public http: HttpClient) { }
+ 
 
   // Ajoute d'une annance
   public AddProduct(product: Offer) {
