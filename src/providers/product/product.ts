@@ -6,9 +6,9 @@ import { Offer } from '../../pages/Class/Offer';
 @Injectable()
 export class ProductProvider {
 
-  private lienADSProduct = "https://ecobusiness-server.herokuapp.com/ADSProduct";
+  private lienAEDGProduct = "https://ecobusiness-server.herokuapp.com/AEDGProduct";
 
-  private lienEDProduct: string = 'https://ecobusiness-server.herokuapp.com/EDProduct';
+  private lienAdDetails: string = 'https://ecobusiness-server.herokuapp.com/AdDetails';
 
   private lienReservationProduct: string = 'https://ecobusiness-server.herokuapp.com/ReservationProduct';
 
@@ -22,18 +22,18 @@ export class ProductProvider {
 
   // Ajoute d'une annance
   public AddProduct(product: Offer) {
-    return this.http.post<any>(this.lienADSProduct, product);
+    return this.http.post<any>(this.lienAEDGProduct, product);
   }
 
   // Supprimer une annance 
   public DeleteProduct(id: number) {
-    return this.http.delete<any>(this.lienADSProduct + '?idProduct=' + id);
+    return this.http.delete<any>(this.lienAEDGProduct + '?idProduct=' + id);
   }
 
   // recuperer les annances dans le serveur a distance 
   public GetProducts(product: string, page: number) {
 
-    const lienSerch = this.lienADSProduct + '?ProductName=' + product + '&Page=' + page;
+    const lienSerch = this.lienAEDGProduct + '?ProductName=' + product + '&Page=' + page;
     return this.http.get<any>(lienSerch);
 
   }
@@ -41,14 +41,14 @@ export class ProductProvider {
   // Modifier une annance
   public EditProduct(product: Offer) {
 
-    return this.http.post<any>(this.lienEDProduct, product);
+    return this.http.put<any>(this.lienAEDGProduct, product);
 
   }
 
   // recuperer les details de produit
   public GetProductDetails(id: string) {
 
-    return this.http.get<any>(this.lienEDProduct + '?ProductId=' + id);
+    return this.http.get<any>(this.lienAdDetails + '?ProductId=' + id);
 
   }
 
