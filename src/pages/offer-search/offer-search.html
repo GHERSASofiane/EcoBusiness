@@ -32,8 +32,16 @@
           </h4>
         </ion-card-title>
         <p>{{off.ProductDescription | slice:0:40}} ...</p> 
-        <button ion-button tappable (click)="goToPageOfferConsult(off.ProductId)" >resever</button>
-        <button ion-button tappable (click)="compare(off.ProductName)">comparer</button>
+
+
+        <ion-item>
+          <button class="btn-info" ion-button round block (click)="goToPageOfferConsult(off.ProductId)" >resever</button>
+        </ion-item>
+
+        <ion-item>
+          <button class="btn-info" ion-button round block (click)="compare(off.ProductName)">comparer</button>
+        </ion-item>
+ 
       </ion-card-content>
     </ion-card>
 
