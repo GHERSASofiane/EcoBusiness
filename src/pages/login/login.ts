@@ -47,17 +47,32 @@ export class LoginPage {
       this.UserProvid.login(this.user).subscribe
         (
           res =>  {
-            if (res.status == "ok") {   
+            console.log(res);
+            if (res.status === "ok") {   
   // set a key/value
-            this.UserProvid.setUser(this.user);
-            this.storage.remove('UserMe'); 
-            this.storage.set('UserMe', res.reponse); 
-            this.navCtrl.setRoot(OfferSearchPage);
-            } else { 
+            this.UserProvid.setUser(res.reponse);
+            localStorage.setItem('token', res.token);
+            
+            } 
+            else { 
+              this.done = true;
               this.showAlert("ERROR", res.message);
             }
           }, 
-          err => this.showAlert("ERROR", "Error on the server :( :( ")
+          err => 
+          {
+            console.log("err " + err);
+            this.showAlert("ERROR", "Error on the server :( :( \n" + err);
+            
+            this.done = true;
+          },
+          () => 
+          {
+            this.storage.remove('UserMe'); 
+            this.storage.set('UserMe', this.UserProvid.getUser()); 
+            this.done = true;
+            this.navCtrl.setRoot(OfferSearchPage);
+          }
         );
  
   }

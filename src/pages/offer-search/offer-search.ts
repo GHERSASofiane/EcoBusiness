@@ -7,6 +7,7 @@ import { ProductProvider } from '../../providers/product/product';
 
 import { Storage } from '@ionic/storage';
 import { HomePage } from '../home/home';
+import { UserProvider } from '../../providers/user/user';
 
 @IonicPage()
 @Component({
@@ -26,17 +27,33 @@ export class OfferSearchPage {
   // Constructeur
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private ProductProvid: ProductProvider, public alertCtrl: AlertController,
-    private storage: Storage  ) {
+    private storage: Storage, private _userProvider : UserProvider  ) {
 
     // Or to get a key/value pair
     this.storage.get('UserMe').then((val) => { 
       this.userMe = val;
+      console.log(this.userMe);
     }).catch(
      err => this.navCtrl.setRoot(HomePage)
     );
    
     this.getoffresBypage('', this.page);
   }
+
+  // entrer ssi y a le token
+  ionViewWillEnter()
+  {
+    if(this._userProvider.loggedIn)
+      {
+        return true;
+      }
+    else
+    {
+      this.navCtrl.setRoot(HomePage);
+      return false;
+    }
+  }
+
 
   // aller sur la page des detais 
   public goToPageOfferConsult(id: number): void {
@@ -108,7 +125,8 @@ export class OfferSearchPage {
         {
           text: 'Oui',
           handler: () => {
-            this.storage.remove('UserMe');  
+            this.storage.remove('UserMe'); 
+            localStorage.removeItem('token'); 
             this.navCtrl.setRoot(HomePage);
           }
         }

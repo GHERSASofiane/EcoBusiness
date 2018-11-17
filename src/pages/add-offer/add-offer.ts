@@ -51,14 +51,19 @@ export class AddOfferPage {
 
     this.ProductProvid.AddProduct(this.product).subscribe(
       res => {
-        if (res.status == "ok") {
+        console.log(res);
+        if (res.status === "ok") {
           this.showAlert("SUCCESS", res.message);
           this.navCtrl.pop();
         } else {
           this.showAlert("ERROR", res.message);
         }
       },
-      err => this.showAlert("ERROR", "Error on the server :( :( ")
+      err => 
+      {
+        console.log(err);
+        this.showAlert("ERROR", "Error on the server :( :( ")
+      }
     )
   }
 
