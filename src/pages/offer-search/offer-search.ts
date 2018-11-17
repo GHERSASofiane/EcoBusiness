@@ -108,7 +108,7 @@ export class OfferSearchPage {
 
   }
 
-  /** 
+ 
   // deconnexion
   public SignOut(): void {
 
@@ -137,7 +137,7 @@ export class OfferSearchPage {
 
 
   }
-*/
+
   //*********** Function pour alert */
   private showAlert(title: string, subTitle: string): void {
     const alert = this.alertCtrl.create({
