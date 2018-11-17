@@ -38,6 +38,11 @@ export class OfferSearchPage {
     this.getoffresBypage('', this.page);
   }
 
+  
+  ionViewDidLoad() {
+    this.getoffresBypage('', this.page);
+  }
+
   // aller sur la page des detais 
   public goToPageOfferConsult(id: number): void {
     this.navCtrl.push(OfferConsultPage, { id: id, user: this.userMe });

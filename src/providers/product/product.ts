@@ -15,8 +15,10 @@ export class ProductProvider {
   private lienMyPubs: string = 'https://ecobusiness-server.herokuapp.com/MyPubs?idUser=';
 
   private lienReservationValidate = "https://ecobusiness-server.herokuapp.com/ReservationValidate";
- 
 
+  private lienDriving = "https://ecobusiness-server.herokuapp.com/Driving?id=";
+ 
+  
   constructor(public http: HttpClient) { }
  
 
@@ -70,6 +72,11 @@ export class ProductProvider {
   // valider une demande de reservation
   public ReservationValidate(Reservation: Reservation) {
     return this.http.post<any>(this.lienReservationValidate, Reservation);
+  }
+
+  // Récupérer le driving
+  public Driving(id: number) {
+    return this.http.get<any>(this.lienDriving+id);
   }
 
 }
