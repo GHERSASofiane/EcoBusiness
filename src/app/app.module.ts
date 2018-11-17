@@ -16,8 +16,7 @@ import { EditOfferPage } from '../pages/edit-offer/edit-offer';
 import { ReservationRequestsPage } from '../pages/reservation-requests/reservation-requests';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoginPage } from '../pages/login/login';
-import { SignUpPage } from '../pages/sign-up/sign-up';
-import { EditProfilePage } from '../pages/edit-profile/edit-profile';
+import { SignUpPage } from '../pages/sign-up/sign-up'; 
 import { UserHomePage } from '../pages/user-home/user-home';
 import { UserProvider } from '../providers/user/user';
 import { TokenInterceptorProvider } from '../providers/token-interceptor/token-interceptor';
@@ -33,8 +32,7 @@ import { ProductComparingPage } from '../pages/product-comparing/product-compari
     EditOfferPage,
     ReservationRequestsPage,
     LoginPage,
-    SignUpPage,
-    EditProfilePage,
+    SignUpPage, 
     UserHomePage,
     ProductComparingPage 
     
@@ -54,8 +52,7 @@ import { ProductComparingPage } from '../pages/product-comparing/product-compari
     EditOfferPage,
     ReservationRequestsPage,
     LoginPage,
-    SignUpPage,
-    EditProfilePage,
+    SignUpPage, 
     UserHomePage,
     ProductComparingPage 
   ],
