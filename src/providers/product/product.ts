@@ -99,7 +99,7 @@ export class ProductProvider {
   // valider l'achat
   public  Buy(id: number)
   { 
-    return this.http.post<any>(this.lienBuy, id);
+    return this.http.post<any>(this.lienBuy, {id : id});
   }
 
   public  setPrices(prices)
