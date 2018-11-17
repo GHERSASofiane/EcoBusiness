@@ -6,6 +6,7 @@ import { User } from '../Class/User';
 import { UserProvider } from '../../providers/user/user';
 import { OfferSearchPage } from '../offer-search/offer-search';
 import { Storage } from '@ionic/storage'; 
+import { validatePassword } from '../../shared/confirm-equal-validator';
 @IonicPage()
 @Component({
   selector: 'page-sign-up',
@@ -20,12 +21,16 @@ export class SignUpPage {
 
   constructor(private UserProvid: UserProvider, public http: HttpClient, public navCtrl: NavController,
     public alertCtrl: AlertController, private storage: Storage) {
-    this.user = new User("","");
-    this.myForm = new FormGroup({
-      userName: new FormControl('', [Validators.required, Validators.minLength(3)]),
-      userMail: new FormControl('', [Validators.required, Validators.pattern(".+\@.+\..")]),
-      userPassword: new FormControl('', [Validators.required, Validators.minLength(6)])
-    });
+      this.user = new User("","");
+      this.myForm = new FormGroup({
+        userName: new FormControl('', [Validators.required, Validators.minLength(3)]),
+        userMail: new FormControl('', [Validators.required, Validators.pattern(".+\@.+\..")]),
+        userPassword: new FormControl('', [Validators.required, Validators.minLength(6)]),
+        passwordConfirmation : new FormControl('', [Validators.required, validatePassword]),
+        userAdress: new FormControl('', [Validators.required, Validators.minLength(6)]),
+        userPhone: new FormControl('', [Validators.required, Validators.minLength(8)]),
+        userPicture: new FormControl('', [Validators.required, Validators.minLength(6)])
+      });
   }
  
 // convertire les images en byte
@@ -53,15 +58,24 @@ export class SignUpPage {
             this.showAlert("SUCCESS", "your account is well created");
             this.userMe = res.reponse;
               // set a key/value
+            this.UserProvid.setUser(this.user);
             this.storage.remove('UserMe'); 
-            this.storage.set('UserMe', this.userMe); 
+            this.storage.set('UserMe', this.userMe);
             this.navCtrl.setRoot(OfferSearchPage);
-          } else {
+          } 
+          else {
             this.showAlert("ERROR", res.message);
           }
         }, 
-        err => this.showAlert("ERROR", "Error on the server :( :( ")
-      );
+        err => this.showAlert("ERROR", "Error on the server :( :( "),
+        /** 
+        () => {
+           
+          if(this.UserProvid.loggedIn())
+             this.navCtrl.setRoot(UserHomePage);
+         }
+     */
+        );
  
 }
 

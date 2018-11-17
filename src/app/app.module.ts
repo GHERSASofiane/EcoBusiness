@@ -14,12 +14,14 @@ import { OfferConsultPage } from '../pages/offer-consult/offer-consult';
 import { ProductProvider } from '../providers/product/product';
 import { EditOfferPage } from '../pages/edit-offer/edit-offer';
 import { ReservationRequestsPage } from '../pages/reservation-requests/reservation-requests';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoginPage } from '../pages/login/login';
 import { SignUpPage } from '../pages/sign-up/sign-up';
 import { EditProfilePage } from '../pages/edit-profile/edit-profile';
 import { UserHomePage } from '../pages/user-home/user-home';
 import { UserProvider } from '../providers/user/user';
+import { TokenInterceptorProvider } from '../providers/token-interceptor/token-interceptor';
+import { ProductComparingPage } from '../pages/product-comparing/product-comparing';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { UserProvider } from '../providers/user/user';
     LoginPage,
     SignUpPage,
     EditProfilePage,
-    UserHomePage
+    UserHomePage,
+    ProductComparingPage
     
   ],
   imports: [
@@ -53,14 +56,20 @@ import { UserProvider } from '../providers/user/user';
     LoginPage,
     SignUpPage,
     EditProfilePage,
-    UserHomePage
+    UserHomePage,
+    ProductComparingPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ProductProvider,
-    UserProvider
+    UserProvider,
+    { 
+      provide : HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorProvider,
+      multi: true
+    },
   ]
 })
 export class AppModule {}

@@ -7,6 +7,8 @@ import { Offer } from '../Class/Offer';
 import { ProductProvider } from '../../providers/product/product';
 
 import { Storage } from '@ionic/storage';
+import { Reponse } from '../Class/reponse';
+import { ProductComparingPage } from '../product-comparing/product-comparing';
 
 @Component({
   selector: 'page-home',
@@ -18,9 +20,10 @@ export class HomePage {
 
 public Calls: Offer[];
 public OffLenght = 0;
+public products: Offer[];
 
   constructor(public navCtrl: NavController, private ProductProvid: ProductProvider, private storage: Storage,
-    public alertCtrl: AlertController) {
+    public alertCtrl: AlertController, private _prod: ProductProvider) {
        
 
     // Or to get a key/value pair
@@ -38,6 +41,10 @@ public OffLenght = 0;
     
   }
  
+
+  ionViewWillEnter() {
+    this.getAllProducts();
+  }
 
   // si je suis connecter je serai rediriger vers la page principale
   MainPage()
@@ -84,5 +91,54 @@ public OffLenght = 0;
     });
     alert.present();
   }
+
+
+
+  getAllProducts() {
+    this._prod.GetProducts('',0).subscribe(
+      res => {
+        let rep = new Reponse("", "");
+        rep = res;
+        this.products = rep.reponse;
+        console.log(res);
+      },
+      err => console.log(err)
+    );
+  }
+
+  compare(productName) {
+    //  if (!!localStorage.getItem(productName)) {
+    //    this._prod.setPrices(localStorage.getItem(productName));
+    //    this.navCtrl.push(ProductComparingPage);
+    //  }
+    //  else
+    // {
+        this._prod.compareProduct(productName).subscribe(
+          res => {
+  
+            console.log(res);
+  
+            if(res.status === "ok")
+            {
+              let result = res.reponse;
+              this._prod.setPrices(result);
+            }
+            else
+            {
+              alert(res.message);
+            }
+            
+          },
+          err => console.log(err),
+          () => {
+            
+          //  localStorage.setItem(productName, JSON.stringify(this._prod.prices));
+          //  this._prod.setPrices(localStorage.getItem(productName));
+            this.navCtrl.push(ProductComparingPage);
+         }
+        );
+    //  } 
+    }
+
 
 }

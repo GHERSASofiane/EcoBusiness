@@ -54,27 +54,66 @@
           </div>
       </ion-item>
 
+
+      <ion-item>
+        <ion-label stacked>Confirm Password : </ion-label>
+        <ion-input required type="password" formControlName="passwordConfirmation" ></ion-input>
+      </ion-item>
+
+      <ion-item no-lines *ngIf="(myForm.get('passwordConfirmation').hasError('required') ||  myForm.get('passwordConfirmation').hasError('notEqual')) && myForm.get('passwordConfirmation').touched">
+        <div class="alert alert-danger" role="alert" *ngIf="myForm.get('passwordConfirmation').hasError('notEqual') && myForm.get('passwordConfirmation').touched">
+          your password don't match
+        </div>
+        <div class="alert alert-danger" role="alert" *ngIf="myForm.get('passwordConfirmation').hasError('required') && myForm.get('passwordConfirmation').touched">
+            confirm your password
+        </div>
+    </ion-item>
+
       
       <ion-item>
         <ion-label stacked>user Address : </ion-label>
-        <ion-input type="text" [(ngModel)]="user.userAddress" [ngModelOptions]="{standalone: true}"></ion-input>
+        <ion-input required type="text" [(ngModel)]="user.userAddress" formControlName="userAdress" ></ion-input>
     </ion-item>
+
+    <ion-item no-lines *ngIf="(myForm.get('userAdress').hasError('required') || myForm.get('userAdress').hasError('minlength')) && myForm.get('userAdress').touched">
+      <div class="alert alert-danger" role="alert" *ngIf="myForm.get('userAdress').hasError('minlength') && myForm.get('userAdress').touched">
+        votre adresse doit contenir au moins 6 caracteres
+      </div>
+      <div class="alert alert-danger" role="alert" *ngIf="myForm.get('userAdress').hasError('required') && myForm.get('userAdress').touched">
+          vous devez saisir adresse
+      </div>
+  </ion-item>
     
     <ion-item>
         <ion-label stacked>user Phone : </ion-label>
-        <ion-input type="tel" [(ngModel)]="user.userPhone" [ngModelOptions]="{standalone: true}"></ion-input>
+        <ion-input required type="tel" [(ngModel)]="user.userPhone" formControlName="userPhone"></ion-input>
     </ion-item>
+
+    <ion-item no-lines *ngIf="(myForm.get('userPhone').hasError('required') || myForm.get('userPhone').hasError('minlength')) && myForm.get('userPhone').touched">
+      <div class="alert alert-danger" role="alert" *ngIf="myForm.get('userPhone').hasError('minlength') && myForm.get('userPhone').touched">
+        votre numéro de telephone doit contenir au moins 8 caracteres
+      </div>
+      <div class="alert alert-danger" role="alert" *ngIf="myForm.get('userPhone').hasError('required') && myForm.get('userPhone').touched">
+          vous devez saisir un numéro de telephone
+      </div>
+    </ion-item>
+
+
 
     <ion-item>
         <ion-label stacked>user Picture : </ion-label>
-        <ion-input type="file" (change)="onFileSelected($event)" #fileInput > 
+        <ion-input required type="file" (change)="onFileSelected($event)" #fileInput formControlName="userPicture"> 
         </ion-input>  
       </ion-item>
-    
+
+      <ion-item no-lines *ngIf="myForm.get('userPicture').hasError('required') && myForm.get('userPicture').touched">
         
-      
-        <button ion-button (tap)="logUp()" id="logup"> SignUp </button>
+        <div class="alert alert-danger" role="alert" *ngIf="myForm.get('userPicture').hasError('required') && myForm.get('userPicture').touched">
+            vous devez mettre une image
+        </div>
+      </ion-item>
+    
+        <button ion-button (tap)="logUp()"  [disabled]="!myForm.controls.userMail.valid"> Sign Up </button>
         
       </form>
-
 </ion-content>
