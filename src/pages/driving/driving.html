@@ -15,7 +15,7 @@
     <!-- l'ensemble des annances  -->
     <div class="row" *ngIf="OffLenght !== 0">
 
-      <ion-card class=" text-light col-sm-3 col-lg-2" *ngFor="let off of Calls">
+      <ion-card class=" text-light col-sm-5 col-lg-4" *ngFor="let off of Calls">
 
         <img src="data:image/png;base64,{{off.ProductPicture}}" class="h-50"/>
         <ion-card-content>
@@ -29,16 +29,27 @@
   
           <p>{{off.ProductDescription | slice:0:50}} ...</p>      
           
-          <button class="btn-info" ion-button outline round small  (click)="Delete(off.ProductId)">
-              <ion-icon name="ios-trash-outline"></ion-icon>
-          </button>
-          <button class="btn-info" ion-button outline round small  (click)="Edit(off)">
-              <ion-icon name="ios-create-outline"></ion-icon>
-          </button>
-          <button class="btn-info"  ion-button outline round small  (click)="Requests(off)">
-            <ion-icon name="ios-cart-outline">
+                  
+          <a href="mailto:{{off.UserMail}}" class="text-info" ion-item>
+            <ion-icon name="ios-mail" class="text-dark  mx-4 "> </ion-icon> {{off.UserMail}}
+          </a>
+        
 
-          </ion-icon></button>
+         
+          <a href="tel:{{off.UserPhone}}" class="text-info" ion-item>
+            <ion-icon name="ios-call-outline" class="text-dark  mx-4 "> </ion-icon> {{off.UserPhone}}
+          </a>
+        
+
+        
+          <a href="https://www.google.fr/maps/place/{{off.UserAdress}}" target="_blank" class="text-info " ion-item>
+            <ion-icon name="ios-send-outline" class="text-dark mx-4 " item-start></ion-icon>{{off.UserAdress}}
+          </a>
+        
+   
+          <ion-item>
+            <button class="btn-info" ion-button round block (click)="Buy(off.ProductId)">Buy</button>
+          </ion-item>
   
         </ion-card-content>
       </ion-card>

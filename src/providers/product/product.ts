@@ -4,9 +4,11 @@ import { Reservation } from '../../pages/Class/Reservation';
 import { Offer } from '../../pages/Class/Offer';
 
 @Injectable()
-export class ProductProvider {
+export class ProductProvider {  
 
   private lienAEDGProduct = "https://ecobusiness-server.herokuapp.com/AEDGProduct";
+
+  private lienBuy = "https://ecobusiness-server.herokuapp.com/Buy";
 
   private lienAdDetails: string = 'https://ecobusiness-server.herokuapp.com/AdDetails';
 
@@ -92,6 +94,12 @@ export class ProductProvider {
   {
     let params = new HttpParams().set('productName', productName);
     return this.http.get<any>(this.compareUrl, {params : params});
+  }
+
+  // valider l'achat
+  public  Buy(id: number)
+  { 
+    return this.http.post<any>(this.lienBuy, id);
   }
 
   public  setPrices(prices)

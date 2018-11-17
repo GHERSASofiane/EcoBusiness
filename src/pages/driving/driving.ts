@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 import { ProductProvider } from '../../providers/product/product'; 
 import { User } from '../Class/User';
 import { OffreDetails } from '../Class/OffreDetails';
+import { OfferSearchPage } from '../offer-search/offer-search';
  
 
 @IonicPage()
@@ -40,6 +41,22 @@ export class DrivingPage {
       err => this.showAlert("ERROR", "Error on the server :( :( ")
     )
   }
+
+    // valider l'achat le produit
+    public Buy(id: number){
+
+      this.ProductProvid.Buy(id).subscribe(
+        res => {
+          if (res.status == "ok") { 
+            this.showAlert("SUCCESS", res.message);
+            this.navCtrl.setRoot(OfferSearchPage); 
+          } else {
+            this.showAlert("ERROR", res.message);
+          }
+        },
+        err => this.showAlert("ERROR", "Error on the server :( :( ")
+      )
+    }
 
   //*********** Function pour alert */
   private showAlert(title: string, subTitle: string): void {
