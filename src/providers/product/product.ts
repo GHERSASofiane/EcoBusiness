@@ -8,7 +8,7 @@ export class ProductProvider {
 
   private lienAEDGProduct = "https://ecobusiness-server.herokuapp.com/AEDGProduct";
 
-  private lienBuy = "https://ecobusiness-server.herokuapp.com/Buy";
+  private lienBuy = "https://ecobusiness-server.herokuapp.com/Buy?id=";
 
   private lienAdDetails: string = 'https://ecobusiness-server.herokuapp.com/AdDetails';
 
@@ -99,7 +99,7 @@ export class ProductProvider {
   // valider l'achat
   public  Buy(id: number)
   { 
-    return this.http.post<any>(this.lienBuy, {id : id});
+    return this.http.get<any>(this.lienBuy+id);
   }
 
   public  setPrices(prices)
