@@ -41,11 +41,11 @@ public products: Offer[];
     
   }
  
-
+/**
   ionViewWillEnter() {
     this.getAllProducts();
   }
-
+*/
   // si je suis connecter je serai rediriger vers la page principale
   MainPage()
   {
