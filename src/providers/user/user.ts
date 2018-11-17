@@ -6,7 +6,7 @@ import * as CryptoJS from 'crypto-js';
 @Injectable()
 export class UserProvider {
 
-  private _user: User;
+  private _user: User = new User("","");
 
   private ADSProfil = "https://ecobusiness-server.herokuapp.com/ADSProfil";
 
@@ -21,14 +21,16 @@ export class UserProvider {
 
 // Ajoute un compte
    public register(user: User) {
-    const usr = user;
+    let usr = new User("","");
+    usr = user;
     usr.userPassword = this.encryptePass(user.userPassword);
     return this.http.post<any>(this.ADSProfil,usr);
   }
 
   // login
   public login(user: User)  {
-    const usr = user;
+    let usr = new User("","");
+    usr = user;
     usr.userPassword = this.encryptePass(user.userPassword);
     return this.http.post<any>(this.Login, usr);
   }
@@ -36,7 +38,8 @@ export class UserProvider {
    
   updateProfile(user)
   {
-    const usr = user;
+    let usr = new User("","");
+    usr = user;
     usr.userPassword = this.encryptePass(user.userPassword);
     return this.http.post<any>(this._url,usr);
   }

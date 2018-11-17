@@ -1,9 +1,18 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController } from 'ionic-angular';  
-import { UserHomePage } from '../user-home/user-home'; 
+import { IonicPage, NavController } from 'ionic-angular';
 import { User } from '../Class/User';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UserProvider } from '../../providers/user/user';
- 
+import { validatePassword } from '../../shared/confirm-equal-validator';
+import { OfferSearchPage } from '../offer-search/offer-search';
+
+
+/**
+ * Generated class for the EditProfilePage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
 
 @IonicPage()
 @Component({
@@ -14,15 +23,26 @@ export class EditProfilePage {
 
   private user = new User("","");
   private selectedFile : File = null;
+  myForm: FormGroup;
 
   
-  constructor(private UserProvid: UserProvider, public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, private _auth: UserProvider) {
   
+    this.myForm = new FormGroup({
+      userName: new FormControl('', [Validators.required, Validators.minLength(3)]),
+      userMail: new FormControl('', [Validators.required, Validators.pattern(".+\@.+\..")]),
+      userPassword: new FormControl('', [Validators.required, Validators.minLength(6)]),
+      passwordConfirmation : new FormControl('', [Validators.required, validatePassword]),
+      userAdress: new FormControl('', [Validators.required, Validators.minLength(6)]),
+      userPhone: new FormControl('', [Validators.required, Validators.minLength(8)]),
+      userPicture: new FormControl('', [Validators.required, Validators.minLength(6)])
+    });
   }
 
   ionViewWillEnter() {
    // console.log('ionViewDidLoad InscriptionPage');
-    // this.user = this.UserProvid.getUser();
+    this.user = this._auth.getUser();
+    console.log(this.user);
     
   }
 
@@ -44,13 +64,13 @@ export class EditProfilePage {
    EditProfile(){
   
     
-    this.UserProvid.updateProfile(this.user).subscribe
+    this._auth.updateProfile(this.user).subscribe
       (
         res => 
         {
           console.log(res);
           localStorage.setItem('token', res.token);
-          this.navCtrl.push(UserHomePage);
+          this.navCtrl.push(OfferSearchPage);
         },
         err => console.log(err)
       );
