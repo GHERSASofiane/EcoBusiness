@@ -69,6 +69,7 @@ export class OfferSearchPage {
   public getOffres(ev: any): void {
     this.page = 0;
     this.CallSearch = ev.target.value;
+    
     this.getoffresBypage(this.CallSearch, this.page);
 
   }
@@ -108,7 +109,6 @@ export class OfferSearchPage {
 
   }
 
- 
   // deconnexion
   public SignOut(): void {
 
