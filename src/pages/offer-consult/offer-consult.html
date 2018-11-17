@@ -48,7 +48,7 @@
             <ion-icon name="ios-send-outline" class="text-dark mx-4 " item-start></ion-icon>{{infos.UserAdress}}
           </a>
         
- 
+     <div *ngIf="infos.UserId !== userMe.userId">
 
         <ion-item>
           <ion-label floating> </ion-label>
@@ -63,7 +63,7 @@
         <ion-item>
           <button class="btn-info" ion-button round block (click)="SendReservation()">Send</button>
         </ion-item>
-
+      </div>
       </ion-list>
     </ion-card-content>
   </ion-card>
