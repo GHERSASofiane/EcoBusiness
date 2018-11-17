@@ -16,11 +16,15 @@ export class ProductProvider {
 
   private lienReservationValidate = "https://ecobusiness-server.herokuapp.com/ReservationValidate";
 
+
   private compareUrl = "https://ecobusiness-server.herokuapp.com/compare";
 
   prices: any;
  
 
+  private lienDriving = "https://ecobusiness-server.herokuapp.com/Driving?id=";
+ 
+  
   constructor(public http: HttpClient) { }
  
 
@@ -76,17 +80,24 @@ export class ProductProvider {
     return this.http.post<any>(this.lienReservationValidate, Reservation);
   }
 
+ 
+  // Récupérer le driving
+  public Driving(id: number) {
+    return this.http.get<any>(this.lienDriving+id);
+  }
+
+ 
   // comparer les prix
-  compareProduct(productName)
+  public  compareProduct(productName)
   {
     let params = new HttpParams().set('productName', productName);
     return this.http.get<any>(this.compareUrl, {params : params});
   }
 
-  setPrices(prices)
+  public  setPrices(prices)
   {
     this.prices = prices;
   }
 
-
+ 
 }

@@ -12,27 +12,42 @@
 
 <ion-content padding> 
 
-  <div *ngFor="let reserv of reservs">
-    {{reserv.ProductDate }}
-      {{reserv.ProductDescription }} 
-        {{reserv.ProductId  }}
-{{reserv.ProductName  }}
-<!-- {{reserv.ProductPicture  }} -->
-{{reserv.ProductPrice  }}
-{{reserv.ProductStatus  }}
-{{reserv.ReservationDate  }}
-{{reserv.ReservationMessage  }}
-{{reserv.ReservationProduct  }}
-{{reserv.ReservationReceive  }}
-{{reserv.ReservationSend  }}
-{{reserv.UserAdress  }}
-{{reserv.UserId  }}
-{{reserv.UserMail  }} 
-{{reserv.UserName  }}
-{{reserv.UserPhone }}
+  <ion-card class=" text-light " *ngFor="let reserv of reservs" style="height: 50%;">
+    <ion-card-content>
+      <ion-list>
 
-<button class="btn-info" ion-button round block (click)="ReservationValidate(reserv)">Validate</button>
-******************************************
-<br>
-</div>
+        <h2 class="font-weight-bold text-info text-center"> {{reserv.UserName  }}
+          <small>
+            <ion-badge class="btn-info"> Le : {{reserv.ReservationDate}}</ion-badge>
+          </small>
+        </h2><br>
+
+        <ion-item class="text-info">
+          {{reserv.ReservationMessage}}
+        </ion-item>
+
+         
+          <a href="mailto:{{reserv.UserMail}}" class="text-info" ion-item>
+            <ion-icon name="ios-mail" class="text-dark  mx-4 "> </ion-icon> {{reserv.UserMail}} 
+          </a>
+        
+
+         
+          <a href="tel:{{reserv.UserPhone}}" class="text-info" ion-item>
+            <ion-icon name="ios-call-outline" class="text-dark  mx-4 "> </ion-icon> {{reserv.UserPhone}}
+          </a>
+         
+        
+          <ion-item >
+
+          </ion-item>
+        <ion-item>
+          <button class="btn-info" ion-button round block (click)="ReservationValidate(reserv)">Validate</button>
+        </ion-item>
+
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+ 
 </ion-content>
