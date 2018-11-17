@@ -75,11 +75,11 @@
 <ion-menu type="overlay" side="left" [content]="mycontent">
 
   <ion-header>
-    <ion-toolbar >
+    <ion-toolbar  >
       <ion-title *ngIf="userMe">
 
         <p style="color: #00ccff; font-family: Snell Roundhand, cursive; " (click)="openPage('EditProfilePage')" >
-          <img src="data:image/png;base64,{{userMe.userPicture}}"  class="rounded-circle mr-4 h-50"/>
+          <img src="data:image/png;base64,{{userMe.userPicture}}"  class="rounded-circle mr-4 "/>
            
           {{userMe.userName}}
 
