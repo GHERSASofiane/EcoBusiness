@@ -45,7 +45,7 @@ export class EditProfilePage {
     console.log(this.user);
     
   }
-
+ 
 
   onFileSelected(event)
   {
