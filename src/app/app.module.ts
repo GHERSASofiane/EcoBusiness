@@ -21,9 +21,7 @@ import { EditProfilePage } from '../pages/edit-profile/edit-profile';
 import { UserHomePage } from '../pages/user-home/user-home';
 import { UserProvider } from '../providers/user/user';
 import { TokenInterceptorProvider } from '../providers/token-interceptor/token-interceptor';
-import { ProductComparingPage } from '../pages/product-comparing/product-comparing';
-import { MyPubsPage } from '../pages/my-pubs/my-pubs';
-import { DrivingPage } from '../pages/driving/driving';
+import { ProductComparingPage } from '../pages/product-comparing/product-comparing'; 
 
 @NgModule({
   declarations: [
@@ -38,8 +36,7 @@ import { DrivingPage } from '../pages/driving/driving';
     SignUpPage,
     EditProfilePage,
     UserHomePage,
-    ProductComparingPage,
-    MyPubsPage
+    ProductComparingPage 
     
   ],
   imports: [
@@ -60,8 +57,7 @@ import { DrivingPage } from '../pages/driving/driving';
     SignUpPage,
     EditProfilePage,
     UserHomePage,
-    ProductComparingPage,
-    MyPubsPage
+    ProductComparingPage 
   ],
   providers: [
     StatusBar,

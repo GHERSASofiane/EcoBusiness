@@ -8,6 +8,7 @@ import { ProductProvider } from '../../providers/product/product';
 import { Storage } from '@ionic/storage';
 import { HomePage } from '../home/home';
 import { UserProvider } from '../../providers/user/user';
+import { ProductComparingPage } from '../product-comparing/product-comparing';
 
 @IonicPage()
 @Component({
@@ -138,6 +139,33 @@ export class OfferSearchPage {
 
   }
 
+
+  compare(productName) { 
+        this.ProductProvid.compareProduct(productName).subscribe(
+          res => {
+  
+            console.log(res);
+  
+            if(res.status === "ok")
+            {
+              let result = res.reponse;
+              this.ProductProvid.setPrices(result);
+            }
+            else
+            {
+              alert(res.message);
+            }
+            
+          },
+          err => console.log(err),
+          () => {
+             
+            this.navCtrl.push(ProductComparingPage);
+         }
+        ); 
+    }
+
+    
   //*********** Function pour alert */
   private showAlert(title: string, subTitle: string): void {
     const alert = this.alertCtrl.create({

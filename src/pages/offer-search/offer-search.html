@@ -18,8 +18,7 @@
   <!-- DIV pour l'ensemble des Annances  -->
   <div class="row" *ngIf="OffLenght !== 0">
 
-    <ion-card class=" text-light col-sm-3 col-lg-2" 
-              (click)="goToPageOfferConsult(off.ProductId)" 
+    <ion-card class=" text-light col-sm-3 col-lg-2"  
               *ngFor="let off of Calls"  >
 
       <img src="data:image/png;base64,{{off.ProductPicture}}" />
@@ -33,6 +32,8 @@
           </h4>
         </ion-card-title>
         <p>{{off.ProductDescription | slice:0:40}} ...</p> 
+        <button ion-button tappable (click)="goToPageOfferConsult(off.ProductId)" >resever</button>
+        <button ion-button tappable (click)="compare(off.ProductName)">comparer</button>
       </ion-card-content>
     </ion-card>
 
