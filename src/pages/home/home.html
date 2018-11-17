@@ -31,7 +31,57 @@
           </h4>
         </ion-card-title>
         <p>{{off.ProductDescription | slice:0:40}} ...</p> 
+        <div>
+          <button ion-button tappable (click)="reserver(off.ProductName)" >resever</button>
+          <button ion-button tappable (click)="compare(off.ProductName)">comparer</button>
+        </div>
       </ion-card-content>
+
+      <!--
+
+         <ion-grid no-padding>
+        <ion-row>
+          <ion-col col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3 *ngFor="let product of products">
+            <div class="cards-container">
+    
+              <ion-card>
+                <ion-card-header >
+                  {{product.ProductName }}
+                </ion-card-header>
+    
+                <img src="data:image/png;base64,{{product.ProductPicture}}" />
+    
+                <ion-card-content>
+                  <div>
+                    {{ product.ProductDescription }}
+                  </div>
+                </ion-card-content>
+    
+                <ion-row>
+                  <ion-col>
+                    <button ion-button icon-start clear small>
+                      <ion-icon ios="ios-cash" md="md-cash"></ion-icon>
+                      <div> {{ product.ProductPrice }} </div>
+                    </button>
+                  </ion-col>
+                  <ion-col center text-center>
+                    <ion-note>
+                      {{ product.ProductDate }}
+                    </ion-note>
+                  </ion-col>
+                  <ion-col>
+                    <button ion-button tappable (click)="reserver(product.ProductName)" >resever</button>
+                    <button ion-button tappable (click)="compare(product.ProductName)">comparer</button>
+                  </ion-col>
+                </ion-row>
+              </ion-card>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      -->
+     
     </ion-card>
 
   </div>

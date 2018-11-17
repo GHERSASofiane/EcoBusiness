@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Reservation } from '../../pages/Class/Reservation';
 import { Offer } from '../../pages/Class/Offer';
@@ -15,6 +15,12 @@ export class ProductProvider {
   private lienMyPubs: string = 'https://ecobusiness-server.herokuapp.com/MyPubs?idUser=';
 
   private lienReservationValidate = "https://ecobusiness-server.herokuapp.com/ReservationValidate";
+
+
+  private compareUrl = "https://ecobusiness-server.herokuapp.com/compare";
+
+  prices: any;
+ 
 
   private lienDriving = "https://ecobusiness-server.herokuapp.com/Driving?id=";
  
@@ -74,9 +80,24 @@ export class ProductProvider {
     return this.http.post<any>(this.lienReservationValidate, Reservation);
   }
 
+ 
   // Récupérer le driving
   public Driving(id: number) {
     return this.http.get<any>(this.lienDriving+id);
   }
 
+ 
+  // comparer les prix
+  public  compareProduct(productName)
+  {
+    let params = new HttpParams().set('productName', productName);
+    return this.http.get<any>(this.compareUrl, {params : params});
+  }
+
+  public  setPrices(prices)
+  {
+    this.prices = prices;
+  }
+
+ 
 }

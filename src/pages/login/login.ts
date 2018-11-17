@@ -41,12 +41,15 @@ export class LoginPage {
 
   public logIn(){
    
+    //  this.encryptePass(this.user.userPassword);
     this.done = false;
+
       this.UserProvid.login(this.user).subscribe
         (
           res =>  {
             if (res.status == "ok") {   
   // set a key/value
+            this.UserProvid.setUser(this.user);
             this.storage.remove('UserMe'); 
             this.storage.set('UserMe', res.reponse); 
             this.navCtrl.setRoot(OfferSearchPage);
