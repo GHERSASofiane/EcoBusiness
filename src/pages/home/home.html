@@ -6,7 +6,7 @@
         <label class="col-lg-9 col-sm-7 col-7 ">EcoBusiness</label>  
       
       <button ion-button (tap)="login()" class="btn btn-sm btn-info col-lg-1 col-sm-2 col-2 align-self-end"><ion-icon name="md-log-in"> LogIn </ion-icon>  </button>
-      <button ion-button (tap)="register()" class="btn btn-sm btn-info col-lg-1 col-sm-2 col-2 align-self-end"> <ion-icon name="ios-create"> Register </ion-icon> </button>
+      <button ion-button (tap)="register()" class="btn btn-sm btn-info col-lg-1 col-sm-2 col-2 align-self-end"> <ion-icon name="ios-create"> SignUp </ion-icon> </button>
     </div> 
     </ion-title>
     </ion-navbar>
@@ -32,7 +32,7 @@
         </ion-card-title>
         <p>{{off.ProductDescription | slice:0:40}} ...</p> 
         <div> 
-          <button ion-button tappable (click)="compare(off.ProductName)">comparer</button>
+          <button ion-button tappable (click)="compare(off.ProductName)" class="btn-info">Compare</button>
         </div>
       </ion-card-content>
 
