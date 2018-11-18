@@ -8,7 +8,7 @@ export class ProductProvider {
 
   private lienAEDGProduct = "https://ecobusiness-server.herokuapp.com/AEDGProduct";
 
-  private lienBuy = "https://ecobusiness-server.herokuapp.com/Buy?id=";
+  private lienBuy = "https://ecobusiness-server.herokuapp.com/Buy";
 
   private lienAdDetails: string = 'https://ecobusiness-server.herokuapp.com/AdDetails';
 
