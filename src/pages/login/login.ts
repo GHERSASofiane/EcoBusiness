@@ -46,10 +46,10 @@ export class LoginPage {
 
       this.UserProvid.login(this.user).subscribe
         (
-          res =>  {
-            console.log(res);
+          res =>  { 
             if (res.status === "ok") {   
   // set a key/value
+            this.storage.set('UserMe',res.reponse);
             this.UserProvid.setUser(res.reponse);
             localStorage.setItem('token', res.token);
             
