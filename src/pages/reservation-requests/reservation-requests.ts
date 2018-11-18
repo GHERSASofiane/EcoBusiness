@@ -7,6 +7,7 @@ import { Reservation } from '../Class/Reservation';
 import { HomePage } from '../home/home';
 
 import { Storage } from '@ionic/storage';
+import { LoginPage } from '../login/login';
 
 
 @IonicPage()
@@ -48,6 +49,12 @@ export class ReservationRequestsPage {
         if (res.status == "ok") { 
           this.reservs = res.reponse;
         } else {
+          if(res.message === "Dec")
+          {
+            localStorage.removeItem('token');
+            this.navCtrl.setRoot(LoginPage);
+          }
+          else
           this.showAlert("ERROR", res.message);
         }
       },

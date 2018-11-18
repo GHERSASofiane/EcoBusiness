@@ -9,6 +9,7 @@ import { Storage } from '@ionic/storage';
 import { HomePage } from '../home/home';
 import { UserProvider } from '../../providers/user/user';
 import { ProductComparingPage } from '../product-comparing/product-comparing';
+import { LoginPage } from '../login/login';
 
 @IonicPage()
 @Component({
@@ -24,6 +25,9 @@ export class OfferSearchPage {
   public Calls: Offer[];
   public OffLenght = 0;
   public page: number = 0;
+
+
+  private _user : User;
 
   // Constructeur
   constructor(public navCtrl: NavController, public navParams: NavParams,
@@ -50,6 +54,7 @@ export class OfferSearchPage {
   {
     if(this._userProvider.loggedIn())
       {
+        this._user = this._userProvider.getUser();
         return true;
       }
     else
@@ -88,7 +93,14 @@ export class OfferSearchPage {
           this.Calls = res.reponse;
           this.OffLenght = this.Calls.length;
         } else {
-          this.showAlert("ERROR", res.message);
+          
+            if(res.message === "Dec")
+            {
+              localStorage.removeItem('token');
+              this.navCtrl.setRoot(LoginPage);
+            }
+            else
+            this.showAlert("ERROR", res.message);
         }
       },
       err => this.showAlert("ERROR", "Error on the server :( :( ")

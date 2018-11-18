@@ -6,6 +6,7 @@ import { ProductProvider } from '../../providers/product/product';
 import { HomePage } from '../home/home';
 
 import { Storage } from '@ionic/storage';
+import { LoginPage } from '../login/login';
 
 @IonicPage()
 @Component({
@@ -72,6 +73,12 @@ export class AddOfferPage {
           this.showAlert("SUCCESS", res.message);
           this.navCtrl.pop();
         } else {
+          if(res.message === "Dec")
+          {
+            localStorage.removeItem('token');
+            this.navCtrl.setRoot(LoginPage);
+          }
+          else
           this.showAlert("ERROR", res.message);
         }
       },

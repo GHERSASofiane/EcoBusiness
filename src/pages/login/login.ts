@@ -61,7 +61,7 @@ export class LoginPage {
           }, 
           err => 
           {
-            console.log("err " + err);
+            
             this.showAlert("ERROR", "Error on the server :( :( \n" + err);
             
             this.done = true;

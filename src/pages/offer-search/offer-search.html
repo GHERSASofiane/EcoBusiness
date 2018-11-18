@@ -85,9 +85,9 @@
       <ion-title *ngIf="userMe">
 
         <p style="color: #00ccff; font-family: Snell Roundhand, cursive; " (click)="openPage('EditProfilePage')">
-          <img src="data:image/png;base64,{{userMe.userPicture}}"  width="10%" height="10%" class="rounded-circle mr-4 "/>
+          <img src="data:image/png;base64,{{_user.userPicture}}"  width="10%" height="10%" class="rounded-circle mr-4 "/>
            
-          {{userMe.userName}}
+          {{_user.userName}}
 
         </p>
 

@@ -8,6 +8,7 @@ import { ReservationRequestsPage } from '../reservation-requests/reservation-req
 import { HomePage } from '../home/home';
 
 import { Storage } from '@ionic/storage';
+import { LoginPage } from '../login/login';
 
 @IonicPage()
 @Component({
@@ -77,6 +78,12 @@ export class MyPubsPage {
                   this.showAlert("SUCCESS", res.message);
                   this.GetProduct();
                 } else {
+                  if(res.message === "Dec")
+                  {
+                    localStorage.removeItem('token');
+                    this.navCtrl.setRoot(LoginPage);
+                  }
+                  else
                   this.showAlert("ERROR", res.message);
                 }
               },

@@ -5,6 +5,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UserProvider } from '../../providers/user/user';
 import { validatePassword } from '../../shared/confirm-equal-validator';
 import { OfferSearchPage } from '../offer-search/offer-search';
+import { LoginPage } from '../login/login';
 
 
 /**
@@ -71,12 +72,22 @@ export class EditProfilePage {
           if(res.status === "ok")
           {
           console.log(res);
-          localStorage.setItem('token', res.token);
+       //   localStorage.setItem('token', res.token);
           this._auth.setUser(res.reponse)
-          this.navCtrl.push(OfferSearchPage);
+          this.navCtrl.setRoot(OfferSearchPage);
           }
           else
-            alert(res.message);
+          {
+            if(res.message === "Dec")
+            {
+              localStorage.removeItem('token');
+              this.navCtrl.setRoot(LoginPage);
+            }
+            else
+              alert(res.message);
+          }
+            
+
         },
         err => console.log(err)
       );
