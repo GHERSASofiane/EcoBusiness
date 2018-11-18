@@ -1,0 +1,35 @@
+<ion-header>
+
+  <ion-navbar>
+    <div style="font-family: Snell Roundhand, cursive; " class="text-info">
+      History
+    </div>
+  </ion-navbar>
+
+</ion-header>
+   
+
+<ion-content class="bg-light"> 
+   
+  <!-- l'ensemble des annances  -->
+  <div class="row" *ngIf="OffLenght !== 0">
+
+    <ion-card class=" text-light col-sm-3 col-lg-2" *ngFor="let off of Calls">
+
+      <img src="data:image/png;base64,{{off.ProductPicture}}"   width="40%" height="40%" class="rounded-circle mr-4 " />
+      <ion-card-content>
+        <ion-card-title>
+          <h2 class="font-weight-bold text-secondary">{{off.ProductName}}
+            <small>
+              <ion-badge item-end class="btn-info">{{off.ProductPrice}} EUR</ion-badge>
+            </small>
+          </h2>
+        </ion-card-title>
+
+        <p>{{off.ProductDescription | slice:0:50}} ...</p>      
+
+      </ion-card-content>
+    </ion-card>
+
+  </div>
+</ion-content>

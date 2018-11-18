@@ -20,8 +20,7 @@ import { SignUpPage } from '../pages/sign-up/sign-up';
 import { UserHomePage } from '../pages/user-home/user-home';
 import { UserProvider } from '../providers/user/user';
 import { TokenInterceptorProvider } from '../providers/token-interceptor/token-interceptor';
-import { ProductComparingPage } from '../pages/product-comparing/product-comparing'; 
-import { EditProfilePage } from '../pages/edit-profile/edit-profile';
+import { ProductComparingPage } from '../pages/product-comparing/product-comparing';  
 
 @NgModule({
   declarations: [

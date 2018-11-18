@@ -21,7 +21,7 @@
     <ion-card class=" text-light col-sm-3 col-lg-2"  
               *ngFor="let off of Calls"  >
 
-      <img src="data:image/png;base64,{{off.ProductPicture}}"  width="40%" height="40%"/>
+      <img src="data:image/png;base64,{{off.ProductPicture}}"  width="40%" height="40%" class="rounded-circle mr-4 "/>
 
       <ion-card-content>
         <ion-card-title>
@@ -116,7 +116,7 @@
         </p>
       </button>
 
-      <button ion-item (click)="openPage('ViewHistoryPage')">
+      <button ion-item (click)="openPage('HistoryPage')">
         <p>
           <ion-icon name="ios-archive" class="mr-5"></ion-icon> History
         </p>
