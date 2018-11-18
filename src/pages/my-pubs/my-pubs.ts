@@ -5,6 +5,7 @@ import { User } from '../Class/User';
 import { ProductProvider } from '../../providers/product/product';
 import { EditOfferPage } from '../edit-offer/edit-offer';
 import { ReservationRequestsPage } from '../reservation-requests/reservation-requests';
+import { HomePage } from '../home/home';
 
 
 @IonicPage()
@@ -19,10 +20,20 @@ export class MyPubsPage {
   private userMe: User;
   public OffLenght = 0;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams
-              ,private ProductProvid: ProductProvider,public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,private storage: Storage,
+              private ProductProvid: ProductProvider,public alertCtrl: AlertController) {
 
-    this.userMe = navParams.get('user');
+        // Or to get a key/value pair
+        this.storage.get('UserMe').then((val) => { 
+          if(val != null){
+            this.userMe = val; 
+          }else{
+            this.navCtrl.setRoot(HomePage)
+          }
+          
+        }).catch(
+         err => this.navCtrl.setRoot(HomePage)
+        );
     this.GetProduct();
   }
 

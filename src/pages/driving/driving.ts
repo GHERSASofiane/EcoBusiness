@@ -4,6 +4,7 @@ import { ProductProvider } from '../../providers/product/product';
 import { User } from '../Class/User';
 import { OffreDetails } from '../Class/OffreDetails';
 import { OfferSearchPage } from '../offer-search/offer-search';
+import { HomePage } from '../home/home';
  
 
 @IonicPage()
@@ -18,9 +19,21 @@ export class DrivingPage {
   private userMe: User;
   public OffLenght = 0;
   
-  constructor(public navCtrl: NavController, public navParams: NavParams
+  constructor(public navCtrl: NavController, public navParams: NavParams, private storage: Storage
     ,private ProductProvid: ProductProvider,public alertCtrl: AlertController) {
-      this.userMe = navParams.get('user');
+      
+        // Or to get a key/value pair
+        this.storage.get('UserMe').then((val) => { 
+          if(val != null){
+            this.userMe = val; 
+          }else{
+            this.navCtrl.setRoot(HomePage)
+          }
+          
+        }).catch(
+         err => this.navCtrl.setRoot(HomePage)
+        );
+        
       this.GetDriving();
   }
 
@@ -30,8 +43,7 @@ export class DrivingPage {
 
     this.ProductProvid.Driving(this.userMe.userId).subscribe(
       res => {
-        if (res.status == "ok") {
-          console.log(res);
+        if (res.status == "ok") { 
           this.Calls = res.reponse;
           this.OffLenght = this.Calls.length;
         } else {

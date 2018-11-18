@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 import { User } from '../Class/User';
 import { Offer } from '../Class/Offer';
 import { ProductProvider } from '../../providers/product/product';
+import { HomePage } from '../home/home';
 
 
 @IonicPage()
@@ -17,11 +18,22 @@ export class EditOfferPage {
   private offre: Offer = new Offer();
   private selectedFile : File = null;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,
+  constructor(public navCtrl: NavController, public navParams: NavParams,private storage: Storage,
     public alertCtrl: AlertController, private ProductProvid: ProductProvider) {
 
     this.offre = this.navParams.get('offre');
-    this.userMe = navParams.get('user');
+    
+        // Or to get a key/value pair
+        this.storage.get('UserMe').then((val) => { 
+          if(val != null){
+            this.userMe = val; 
+          }else{
+            this.navCtrl.setRoot(HomePage)
+          }
+          
+        }).catch(
+         err => this.navCtrl.setRoot(HomePage)
+        );
 
   }
 

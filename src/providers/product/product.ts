@@ -103,6 +103,13 @@ export class ProductProvider {
     return this.http.get<any>(this.lienBuy, {params : params});
   }
 
+  // récupéré l'historie
+  public  GetHistory(id: number)
+  { 
+    let params = new HttpParams().set('id', id.toString());
+    return this.http.get<any>(this.lienBuy, {params : params});
+  }
+
   public  setPrices(prices)
   {
     this.prices = prices;

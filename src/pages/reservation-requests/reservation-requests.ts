@@ -4,6 +4,7 @@ import { User } from '../Class/User';
 import { Offer } from '../Class/Offer';
 import { ProductProvider } from '../../providers/product/product';
 import { Reservation } from '../Class/Reservation';
+import { HomePage } from '../home/home';
 
 
 
@@ -19,10 +20,22 @@ export class ReservationRequestsPage {
   private Call: Offer = new Offer();
   public reservs: Reservation[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,
+  constructor(public navCtrl: NavController, public navParams: NavParams, private storage: Storage,
              private ProductProvid: ProductProvider, private alertCtrl: AlertController) {
                
-    this.userMe = navParams.get('user');
+    
+    // Or to get a key/value pair
+    this.storage.get('UserMe').then((val) => { 
+      if(val != null){
+        this.userMe = val; 
+      }else{
+        this.navCtrl.setRoot(HomePage)
+      }
+      
+    }).catch(
+     err => this.navCtrl.setRoot(HomePage)
+    );
+    
     this.Call = this.navParams.get('offre');
     this.GetReservationReq();
   }

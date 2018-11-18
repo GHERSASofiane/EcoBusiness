@@ -32,8 +32,12 @@ export class OfferSearchPage {
 
     // Or to get a key/value pair
     this.storage.get('UserMe').then((val) => { 
-      this.userMe = val;
-      console.log(this.userMe);
+      if(val != null){
+        this.userMe = val; 
+      }else{
+        this.navCtrl.setRoot(HomePage)
+      }
+      
     }).catch(
      err => this.navCtrl.setRoot(HomePage)
     );

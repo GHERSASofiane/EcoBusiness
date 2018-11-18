@@ -4,6 +4,7 @@ import { User } from '../Class/User';
 import { OffreDetails } from '../Class/OffreDetails';
 import { Reservation } from '../Class/Reservation';
 import { ProductProvider } from '../../providers/product/product';
+import { HomePage } from '../home/home';
  
 
 @IonicPage()
@@ -20,11 +21,22 @@ export class OfferConsultPage {
   // **** For chat 
   public Reservation: Reservation = new Reservation();
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,
+  constructor(public navCtrl: NavController, public navParams: NavParams,private storage: Storage,
     private ProductProvid: ProductProvider, public alertCtrl: AlertController) {
 
     this.id = navParams.get('id');
-    this.userMe = navParams.get('user');
+    // Or to get a key/value pair
+    this.storage.get('UserMe').then((val) => { 
+      if(val != null){
+        this.userMe = val; 
+      }else{
+        this.navCtrl.setRoot(HomePage)
+      }
+      
+    }).catch(
+     err => this.navCtrl.setRoot(HomePage)
+    );
+    
     this.GetDetails();
 
     this.Reservation.ReservationMessage = '';
