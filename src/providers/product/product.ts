@@ -99,7 +99,8 @@ export class ProductProvider {
   // valider l'achat
   public  Buy(id: number)
   { 
-    return this.http.get<any>(this.lienBuy+id);
+    let params = new HttpParams().set('id', id.toString());
+    return this.http.get<any>(this.lienBuy, {params : params});
   }
 
   public  setPrices(prices)
