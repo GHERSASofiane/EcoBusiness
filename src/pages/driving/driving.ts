@@ -27,6 +27,7 @@ export class DrivingPage {
         this.storage.get('UserMe').then((val) => { 
           if(val != null){
             this.userMe = val; 
+            this.GetDriving();
           }else{
             this.navCtrl.setRoot(HomePage)
           }
@@ -35,7 +36,6 @@ export class DrivingPage {
          err => this.navCtrl.setRoot(HomePage)
         );
         
-      this.GetDriving();
   }
 
 

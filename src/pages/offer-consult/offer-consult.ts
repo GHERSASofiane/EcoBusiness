@@ -30,6 +30,10 @@ export class OfferConsultPage {
     this.storage.get('UserMe').then((val) => { 
       if(val != null){
         this.userMe = val; 
+        this.GetDetails();
+    
+        this.Reservation.ReservationMessage = '';
+        this.Reservation.ReservationDate = '';
       }else{
         this.navCtrl.setRoot(HomePage)
       }
@@ -38,10 +42,6 @@ export class OfferConsultPage {
      err => this.navCtrl.setRoot(HomePage)
     );
     
-    this.GetDetails();
-
-    this.Reservation.ReservationMessage = '';
-    this.Reservation.ReservationDate = '';
 
   }
 

@@ -26,6 +26,7 @@ export class HistoryPage {
     this.storage.get('UserMe').then((val) => { 
       if(val != null){
         this.userMe = val; 
+        this.GetHistory();
       }else{
         this.navCtrl.setRoot(HomePage)
       }
@@ -34,7 +35,6 @@ export class HistoryPage {
      err => this.navCtrl.setRoot(HomePage)
     );
     
-    this.GetHistory();
   }
 
   // reuperer l'historie

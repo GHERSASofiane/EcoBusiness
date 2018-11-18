@@ -67,7 +67,7 @@ export class OfferSearchPage {
 
   // aller vers une page demander par l'utilisateur 
   public openPage(page: string): void {
-    this.navCtrl.push(page, { user: this.userMe });
+    this.navCtrl.push(page );
   }
 
   // récuperer les annances postulé

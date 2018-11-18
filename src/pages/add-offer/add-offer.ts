@@ -25,9 +25,17 @@ export class AddOfferPage {
 
     
         // Or to get a key/value pair
-        this.storage.get('UserMe').then((val) => { 
+        this.storage.get('UserMe').then((val) => {  
           if(val != null){
-            this.userMe = val; 
+            
+            this.userMe = val;
+            this.product.ProductPicture = '';
+            this.product.ProductDate = "";
+            this.product.ProductName = "";
+            this.product.ProductDescription = "";
+            this.product.ProductPrice = 0;
+            this.product.UserId = this.userMe.userId;
+              
           }else{
             this.navCtrl.setRoot(HomePage)
           }
@@ -36,12 +44,6 @@ export class AddOfferPage {
          err => this.navCtrl.setRoot(HomePage)
         ); 
 
-    this.product.ProductPicture = '';
-    this.product.ProductDate = "";
-    this.product.ProductName = "";
-    this.product.ProductDescription = "";
-    this.product.ProductPrice = 0;
-    this.product.UserId = this.userMe.userId;
   }
 
   // selection de photo de produit 

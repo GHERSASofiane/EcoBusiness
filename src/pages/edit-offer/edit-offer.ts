@@ -37,8 +37,7 @@ export class EditOfferPage {
         );
 
   }
-
-  ionViewDidLoad() { }
+ 
 
 
   public onFileSelected(event: any): void {

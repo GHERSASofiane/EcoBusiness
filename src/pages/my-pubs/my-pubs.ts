@@ -28,6 +28,7 @@ export class MyPubsPage {
         this.storage.get('UserMe').then((val) => { 
           if(val != null){
             this.userMe = val; 
+            this.GetProduct();
           }else{
             this.navCtrl.setRoot(HomePage)
           }
@@ -35,7 +36,6 @@ export class MyPubsPage {
         }).catch(
          err => this.navCtrl.setRoot(HomePage)
         );
-    this.GetProduct();
   }
 
   // reuperer les annances
