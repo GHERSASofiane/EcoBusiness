@@ -10,6 +10,8 @@ export class ProductProvider {
 
   private lienBuy = "https://ecobusiness-server.herokuapp.com/Buy";
 
+  private lienHistory = "https://ecobusiness-server.herokuapp.com/History";
+
   private lienAdDetails: string = 'https://ecobusiness-server.herokuapp.com/AdDetails';
 
   private lienReservationProduct: string = 'https://ecobusiness-server.herokuapp.com/ReservationProduct';
@@ -107,7 +109,7 @@ export class ProductProvider {
   public  GetHistory(id: number)
   { 
     let params = new HttpParams().set('id', id.toString());
-    return this.http.get<any>(this.lienBuy, {params : params});
+    return this.http.get<any>(this.lienHistory, {params : params});
   }
 
   public  setPrices(prices)
