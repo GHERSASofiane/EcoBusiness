@@ -16,7 +16,8 @@
 
     <ion-card class=" text-light col-sm-3 col-lg-2" *ngFor="let off of Calls">
 
-      <h2  *ngIf="off.UserName"> Buyed : {{off.UserName}} </h2>
+      <h2  *ngIf="off.UserName" class="font-weight-bold text-info text-center" > Buyed : {{off.UserName}} </h2>
+      <h2  *ngIf="!off.UserName" class="font-weight-bold text-info text-center" > Selled </h2>
 
       <img src="data:image/png;base64,{{off.ProductPicture}}"   width="40%" height="40%" class="rounded-circle mr-4 " />
       <ion-card-content>
