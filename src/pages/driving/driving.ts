@@ -6,6 +6,7 @@ import { OffreDetails } from '../Class/OffreDetails';
 import { OfferSearchPage } from '../offer-search/offer-search';
 import { HomePage } from '../home/home';
  
+import { Storage } from '@ionic/storage';
 
 @IonicPage()
 @Component({

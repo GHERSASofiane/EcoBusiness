@@ -5,6 +5,7 @@ import { Offer } from '../Class/Offer';
 import { ProductProvider } from '../../providers/product/product';
 import { HomePage } from '../home/home';
 
+import { Storage } from '@ionic/storage';
 
 @IonicPage()
 @Component({

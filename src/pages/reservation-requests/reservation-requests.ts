@@ -6,6 +6,7 @@ import { ProductProvider } from '../../providers/product/product';
 import { Reservation } from '../Class/Reservation';
 import { HomePage } from '../home/home';
 
+import { Storage } from '@ionic/storage';
 
 
 @IonicPage()

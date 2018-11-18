@@ -7,6 +7,7 @@ import { EditOfferPage } from '../edit-offer/edit-offer';
 import { ReservationRequestsPage } from '../reservation-requests/reservation-requests';
 import { HomePage } from '../home/home';
 
+import { Storage } from '@ionic/storage';
 
 @IonicPage()
 @Component({
