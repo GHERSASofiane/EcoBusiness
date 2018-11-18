@@ -61,7 +61,7 @@ export class EditProfilePage {
            this.user.userPicture = btoa(binaryString);
    }
 
-   EditProfile(){
+   updateProfile(){
   
     
     this._auth.updateProfile(this.user).subscribe
