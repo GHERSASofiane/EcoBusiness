@@ -42,9 +42,9 @@ export class OfferSearchPage {
   }
 
   // entrer ssi y a le token
-  ionViewWillEnter()
+  ionViewCanEnter()
   {
-    if(this._userProvider.loggedIn)
+    if(this._userProvider.loggedIn())
       {
         return true;
       }
