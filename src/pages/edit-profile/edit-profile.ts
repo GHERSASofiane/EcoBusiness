@@ -68,9 +68,15 @@ export class EditProfilePage {
       (
         res => 
         {
+          if(res.status === "ok")
+          {
           console.log(res);
           localStorage.setItem('token', res.token);
+          this._auth.setUser(res.reponse)
           this.navCtrl.push(OfferSearchPage);
+          }
+          else
+            alert(res.message);
         },
         err => console.log(err)
       );
