@@ -36,6 +36,8 @@ export class AddOfferPage {
          err => this.navCtrl.setRoot(HomePage)
         );
 
+        console.log(this.userMe);
+
     this.product.ProductPicture = '';
     this.product.ProductDate = "";
     this.product.ProductName = "";
