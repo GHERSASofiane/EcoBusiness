@@ -4,6 +4,7 @@ export class Offer{
     ProductDate: String;
     ProductDescription: String;
     ProductPicture: String; 
+    UserName?: String; 
     
     ProductId: number;
     ProductPrice: number;
