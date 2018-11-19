@@ -16,7 +16,7 @@
       <div padding-horizontal text-center class="animated fadeInDown">
         <div class="logo"></div>
         <h2 ion-text class="text-primary">
-          <strong>Eco Business</strong> 
+          <strong>EcoBusiness</strong> 
           <p> you don't need it, sell it </p>
         </h2>
       </div>
@@ -62,7 +62,7 @@
   
       
       <div>
-        <button ion-button icon-start tappable (click)="logIn()" block [disabled]="!myForm.controls.userMail.valid">
+        <button ion-button icon-start tappable (click)="logIn()" block [disabled]="!myForm.controls.userMail.valid" class=" btn-info">
           <ion-icon name="log-in"></ion-icon>
           SIGN IN
           <ion-spinner id="spinner" name="circles" *ngIf="done == false"></ion-spinner> 
