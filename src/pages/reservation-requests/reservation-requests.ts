@@ -8,6 +8,7 @@ import { HomePage } from '../home/home';
 
 import { Storage } from '@ionic/storage';
 import { LoginPage } from '../login/login';
+import { SMS } from '@ionic-native/sms';
 
 
 @IonicPage()
@@ -23,7 +24,7 @@ export class ReservationRequestsPage {
   public reservs: Reservation[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private storage: Storage,
-             private ProductProvid: ProductProvider, private alertCtrl: AlertController) {
+             private ProductProvid: ProductProvider, private alertCtrl: AlertController, private sms: SMS) {
                
     
     // Or to get a key/value pair
@@ -106,9 +107,9 @@ export class ReservationRequestsPage {
   private SendSMS(reservAccepte: Reservation){
     for (let index = 0; index < this.reservs.length; index++) {  
       if(this.reservs[index] === reservAccepte){
-        this.showAlert("SMS", "Votre demande est accepter : "+this.reservs[index].UserPhone);
+        this.sms.send(''+this.reservs[index].UserPhone, 'Votre demande est acceptée :');
       }else{
-        this.showAlert("SMS", "Votre demande n'est pas accepter : "+this.reservs[index].UserPhone);
+        this.sms.send(''+this.reservs[index].UserPhone, 'Votre demande n\'est pas acceptée.');
       }
       
     }
