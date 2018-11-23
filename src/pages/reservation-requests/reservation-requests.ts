@@ -7,8 +7,7 @@ import { Reservation } from '../Class/Reservation';
 import { HomePage } from '../home/home';
 
 import { Storage } from '@ionic/storage';
-import { LoginPage } from '../login/login';
-import { SMS } from '@ionic-native/sms';
+import { LoginPage } from '../login/login'; 
 
 
 @IonicPage()
@@ -24,7 +23,7 @@ export class ReservationRequestsPage {
   public reservs: Reservation[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private storage: Storage,
-             private ProductProvid: ProductProvider, private alertCtrl: AlertController, private sms: SMS) {
+             private ProductProvid: ProductProvider, private alertCtrl: AlertController ) {
                
     
     // Or to get a key/value pair
@@ -105,14 +104,14 @@ export class ReservationRequestsPage {
 
   // fonction pour envoyer des messages a les demandeur de reservation 
   private SendSMS(reservAccepte: Reservation){
-    for (let index = 0; index < this.reservs.length; index++) {  
-      if(this.reservs[index] === reservAccepte){
-        this.sms.send(''+this.reservs[index].UserPhone, 'Votre demande est acceptée :');
-      }else{
-        this.sms.send(''+this.reservs[index].UserPhone, 'Votre demande n\'est pas acceptée.');
-      }
+    // for (let index = 0; index < this.reservs.length; index++) {  
+    //   if(this.reservs[index] === reservAccepte){
+    //     this.sms.send(''+this.reservs[index].UserPhone, 'Votre demande est acceptée :');
+    //   }else{
+    //     this.sms.send(''+this.reservs[index].UserPhone, 'Votre demande n\'est pas acceptée.');
+    //   }
       
-    }
+    // }
   }
 
   //*********** Function pour alert */
