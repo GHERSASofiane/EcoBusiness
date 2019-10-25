@@ -1,0 +1,137 @@
+
+
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Tab One
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <!-- <share-button>
+    <a href="whatsapp://send?text=plaise coco" rel="nofollow" >XXX</a>   
+  </share-button> -->
+ 
+  <div id="share-buttons">
+    
+    <!-- Buffer -->
+    <a href="https://bufferapp.com/add?url=https://simplesharebuttons.com&amp;text=Simple Share Buttons" target="_blank">
+        <img src="https://simplesharebuttons.com/images/somacro/buffer.png" alt="Buffer" />
+    </a>
+    
+    <!-- Digg -->
+    <a href="http://www.digg.com/submit?url=https://simplesharebuttons.com" target="_blank">
+        <img src="https://simplesharebuttons.com/images/somacro/diggit.png" alt="Digg" />
+    </a>
+    
+    <!-- Email -->
+    <a href="mailto:?Subject=Simple Share Buttons&amp;Body=I%20saw%20this%20and%20thought%20of%20you!%20 https://simplesharebuttons.com">
+        <img src="https://simplesharebuttons.com/images/somacro/email.png" alt="Email" />
+    </a>
+ 
+    <!-- Facebook -->
+    <a href="http://www.facebook.com/sharer.php?u=https://simplesharebuttons.com" target="_blank">
+        <img src="https://simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook" />
+    </a>
+    
+    <!-- Google+ -->
+    <a href="https://plus.google.com/share?url=https://simplesharebuttons.com" target="_blank">
+        <img src="https://simplesharebuttons.com/images/somacro/google.png" alt="Google" />
+    </a>
+    
+    <!-- LinkedIn -->
+    <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=https://simplesharebuttons.com" target="_blank">
+        <img src="https://simplesharebuttons.com/images/somacro/linkedin.png" alt="LinkedIn" />
+    </a>
+    
+    <!-- Pinterest -->
+    <a href="javascript:void((function()%7Bvar%20e=document.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('charset','UTF-8');e.setAttribute('src','http://assets.pinterest.com/js/pinmarklet.js?r='+Math.random()*99999999);document.body.appendChild(e)%7D)());">
+        <img src="https://simplesharebuttons.com/images/somacro/pinterest.png" alt="Pinterest" />
+    </a>
+    
+    <!-- Print -->
+    <a href="javascript:;" onclick="window.print()">
+        <img src="https://simplesharebuttons.com/images/somacro/print.png" alt="Print" />
+    </a>
+    
+    <!-- Reddit -->
+    <a href="http://reddit.com/submit?url=https://simplesharebuttons.com&amp;title=Simple Share Buttons" target="_blank">
+        <img src="https://simplesharebuttons.com/images/somacro/reddit.png" alt="Reddit" />
+    </a>
+    
+    <!-- StumbleUpon-->
+    <a href="http://www.stumbleupon.com/submit?url=https://simplesharebuttons.com&amp;title=Simple Share Buttons" target="_blank">
+        <img src="https://simplesharebuttons.com/images/somacro/stumbleupon.png" alt="StumbleUpon" />
+    </a>
+    
+    <!-- Tumblr-->
+    <a href="http://www.tumblr.com/share/link?url=https://simplesharebuttons.com&amp;title=Simple Share Buttons" target="_blank">
+        <img src="https://simplesharebuttons.com/images/somacro/tumblr.png" alt="Tumblr" />
+    </a>
+     
+    <!-- Twitter -->
+    <a href="https://twitter.com/share?url=https://simplesharebuttons.com&amp;text=Simple%20Share%20Buttons&amp;hashtags=simplesharebuttons" target="_blank">
+        <img src="https://simplesharebuttons.com/images/somacro/twitter.png" alt="Twitter" />
+    </a>
+    
+    <!-- VK -->
+    <a href="http://vkontakte.ru/share.php?url=https://simplesharebuttons.com" target="_blank">
+        <img src="https://simplesharebuttons.com/images/somacro/vk.png" alt="VK" />
+    </a>
+    
+    <!-- Yummly -->
+    <a href="http://www.yummly.com/urb/verify?url=https://simplesharebuttons.com&amp;title=Simple Share Buttons" target="_blank">
+        <img src="https://simplesharebuttons.com/images/somacro/yummly.png" alt="Yummly" />
+    </a>
+
+</div>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col *ngFor="let item of myhome; let cmpt = index" 
+                size-lg="3" size-md="4" size-sm="5" size-xl="3"
+        size-xs="6">
+        <div class="iocard">
+
+          <ion-item [routerLink]="['/article-details/', cmpt]" routerDirection="forward">
+            <ion-label class="card_label text-center">{{item.product.nomprd}}</ion-label>
+          </ion-item>
+
+          <ion-slides [options]="sliderOpts" pager=true 
+                      [routerLink]="['/article-details/', cmpt]" routerDirection="forward">
+            <ion-slide *ngFor="let img of item.images">
+              <img src="{{img}}">
+            </ion-slide>
+          </ion-slides>
+ 
+          <div>
+            <ion-chip color="light" outline=true style="float: left;margin: 0%;"
+                      [routerLink]="['/article-details/', cmpt]" routerDirection="forward">
+              <ion-icon name="basket"></ion-icon>
+            </ion-chip>
+            <ion-chip color="light" outline=true style="float: right;margin: 0%;" (click)="Like(item)">
+              <ion-icon name="heart" color="danger" *ngIf="item.like==true"></ion-icon>
+              <ion-icon name="heart-empty" *ngIf="item.like==false"></ion-icon>
+              <ion-label class="infos">{{item.nombrelike}}</ion-label>
+            </ion-chip>
+            <ion-chip color="light" outline=true style="float: right;margin: 0%;" (click)="Share(item)">
+              <ion-icon name="share" ></ion-icon> 
+            </ion-chip>
+          </div> 
+          <div>
+          <ion-label *ngIf="item.characteristics[0] != null"
+                      [routerLink]="['/article-details/', cmpt]" routerDirection="forward">
+            <ion-chip color="light" outline=true style="float: left;margin: 0%;">
+              <ion-label class="infos">{{item.characteristics[0].prixchar}}</ion-label>
+            </ion-chip>
+          </ion-label>
+        </div>
+
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

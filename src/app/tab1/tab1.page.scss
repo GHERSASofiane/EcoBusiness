@@ -1,0 +1,34 @@
+
+
+@import '~@ngx-share/button/themes/default/default-theme';
+
+.welcome-card img {
+  max-height: 35vh;
+  overflow: hidden;
+}
+ 
+
+ion-slides {  
+  background: #fafafa;
+  img{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    
+  }
+}
+
+.card_label {
+  margin: 0%;
+  padding: 0%;
+  font-family: 'Bad Script', cursive;
+}
+
+.iocard{
+  margin-bottom: 70px;
+  margin-right: 20px;
+  padding: 0%;
+}
+
+.infos{
+  color: #8fe0d3;
+}

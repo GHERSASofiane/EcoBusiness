@@ -1,8 +1,7 @@
 {
-  "name": "EcoBusiness",
+  "name": "GHERSA",
   "integrations": {
     "cordova": {}
   },
-  "type": "ionic-angular",
-  "app_id": ""
+  "type": "angular"
 }

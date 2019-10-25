@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>ArticleDetails</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+  
+
+  <div *ngIf="myArticle">
+    <h1>{{myArticle.product.nomprd}}</h1>
+    <p>{{myArticle.product.descprd}}</p>
+
+    <div *ngFor="let item of myArticle.characteristics">
+      <p>{{item.prixchar}} DA</p>
+    </div>
+
+  </div>
+
+</ion-content>
